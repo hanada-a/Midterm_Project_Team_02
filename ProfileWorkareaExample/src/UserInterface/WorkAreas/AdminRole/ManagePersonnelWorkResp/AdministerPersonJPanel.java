@@ -61,11 +61,86 @@ public class AdministerPersonJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Back = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        PersonIDTextField = new javax.swing.JTextField();
+        NameTextField = new javax.swing.JTextField();
+        EmailTextField = new javax.swing.JTextField();
+        PhoneTextField = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        AddressTextArea = new javax.swing.JTextArea();
+        SaveButton = new javax.swing.JButton();
+        Back = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
         setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel2.setText("Manage Person Profile");
+        add(jLabel2);
+        jLabel2.setBounds(21, 20, 550, 29);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("Person ID:");
+        add(jLabel3);
+        jLabel3.setBounds(30, 70, 100, 20);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setText("Name:");
+        add(jLabel4);
+        jLabel4.setBounds(30, 100, 100, 20);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setText("Email:");
+        add(jLabel5);
+        jLabel5.setBounds(30, 130, 100, 20);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setText("Phone:");
+        add(jLabel6);
+        jLabel6.setBounds(30, 160, 100, 20);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setText("Address:");
+        add(jLabel7);
+        jLabel7.setBounds(30, 190, 100, 20);
+
+        PersonIDTextField.setEditable(false);
+        PersonIDTextField.setBackground(new java.awt.Color(240, 240, 240));
+        add(PersonIDTextField);
+        PersonIDTextField.setBounds(140, 70, 300, 25);
+
+        add(NameTextField);
+        NameTextField.setBounds(140, 100, 300, 25);
+
+        add(EmailTextField);
+        EmailTextField.setBounds(140, 130, 300, 25);
+
+        add(PhoneTextField);
+        PhoneTextField.setBounds(140, 160, 300, 25);
+
+        AddressTextArea.setColumns(20);
+        AddressTextArea.setRows(3);
+        jScrollPane1.setViewportView(AddressTextArea);
+
+        add(jScrollPane1);
+        jScrollPane1.setBounds(140, 190, 300, 60);
+
+        SaveButton.setBackground(new java.awt.Color(51, 153, 255));
+        SaveButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        SaveButton.setForeground(new java.awt.Color(255, 255, 255));
+        SaveButton.setText("Save");
+        SaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveButtonActionPerformed(evt);
+            }
+        });
+        add(SaveButton);
+        SaveButton.setBounds(370, 270, 70, 32);
 
         Back.setText("<< Back");
         Back.addActionListener(new java.awt.event.ActionListener() {
@@ -74,12 +149,7 @@ public class AdministerPersonJPanel extends javax.swing.JPanel {
             }
         });
         add(Back);
-        Back.setBounds(30, 290, 76, 32);
-
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel2.setText("Manage Person Profile");
-        add(jLabel2);
-        jLabel2.setBounds(21, 20, 550, 29);
+        Back.setBounds(30, 270, 76, 32);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
