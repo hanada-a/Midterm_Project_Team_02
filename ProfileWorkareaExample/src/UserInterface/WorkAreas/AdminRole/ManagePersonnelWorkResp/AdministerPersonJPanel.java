@@ -2,16 +2,20 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ * @author Akira Hanada
  */
 package UserInterface.WorkAreas.AdminRole.ManagePersonnelWorkResp;
 
 import Business.Business;
+import Business.Person.Person;
+import Business.Person.PersonDirectory;
 
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author kal bugrara
+ * @author Akira Hanada
  */
 public class AdministerPersonJPanel extends javax.swing.JPanel {
 
@@ -19,20 +23,33 @@ public class AdministerPersonJPanel extends javax.swing.JPanel {
      * Creates new form ManageSuppliersJPanel
      */
     JPanel CardSequencePanel;
-
     Business business;
+    Person selectedPerson;
 
-    public AdministerPersonJPanel(Business bz, JPanel jp) {
+    public AdministerPersonJPanel(Business bz, JPanel jp, Person person) {
 
         CardSequencePanel = jp;
         this.business = bz;
+        this.selectedPerson = person;
         initComponents();
-
-
+        
+        if (selectedPerson != null) {
+            populateFields();
+        }
     }
 
-    public void refreshTable() {
-
+    /**
+     * Populate form fields with person data
+     * @author Akira Hanada
+     */
+    private void populateFields() {
+        if (selectedPerson != null) {
+            PersonIDTextField.setText(selectedPerson.getPersonId());
+            NameTextField.setText(selectedPerson.getName());
+            EmailTextField.setText(selectedPerson.getEmail());
+            PhoneTextField.setText(selectedPerson.getPhone());
+            AddressTextArea.setText(selectedPerson.getAddress());
+        }
     }
 
     /**
@@ -66,17 +83,79 @@ public class AdministerPersonJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
-        // TODO add your handling code here:
+        // Navigate back to person list
         CardSequencePanel.remove(this);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 
-
     }//GEN-LAST:event_BackActionPerformed
+
+    private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
+        // Save person profile - Author: Akira Hanada
+        
+        // Validate inputs
+        String name = NameTextField.getText();
+        String email = EmailTextField.getText();
+        String phone = PhoneTextField.getText();
+        String address = AddressTextArea.getText();
+        
+        if (name == null || name.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Name is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (email == null || email.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Email is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Basic email validation
+        if (!email.contains("@") || !email.contains(".")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid email address.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        try {
+            // Update person information
+            if (selectedPerson != null) {
+                selectedPerson.setName(name.trim());
+                selectedPerson.setEmail(email.trim());
+                selectedPerson.setPhone(phone.trim());
+                selectedPerson.setAddress(address.trim());
+                
+                JOptionPane.showMessageDialog(this, 
+                    "Person profile updated successfully!", 
+                    "Success", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+            // Navigate back
+            CardSequencePanel.remove(this);
+            ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, 
+                "Error updating person profile: " + e.getMessage(), 
+                "Update Error", 
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_SaveButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea AddressTextArea;
     private javax.swing.JButton Back;
+    private javax.swing.JTextField EmailTextField;
+    private javax.swing.JTextField NameTextField;
+    private javax.swing.JTextField PersonIDTextField;
+    private javax.swing.JTextField PhoneTextField;
+    private javax.swing.JButton SaveButton;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
 }

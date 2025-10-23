@@ -2,17 +2,21 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ * @author Akira Hanada
  */
 package UserInterface.WorkAreas.AdminRole.ManagePersonnelWorkResp;
 
 import Business.Business;
-
+import Business.Person.Person;
+import Business.Person.PersonDirectory;
 
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author kal bugrara
+ * @author Akira Hanada
  */
 public class ManagePersonsJPanel extends javax.swing.JPanel {
 
@@ -21,13 +25,40 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
      */
     JPanel CardSequencePanel;
     Business business;
+    Person selectedPerson;
 
 
     public ManagePersonsJPanel(Business bz, JPanel jp) {
         CardSequencePanel = jp;
         this.business = bz;
         initComponents();
+        refreshTable();
 
+    }
+
+    /**
+     * Refresh the table with all persons
+     * @author Akira Hanada
+     */
+    private void refreshTable() {
+        // Clear table
+        int rc = PersonTable.getRowCount();
+        for (int i = rc - 1; i >= 0; i--) {
+            ((DefaultTableModel) PersonTable.getModel()).removeRow(i);
+        }
+
+        PersonDirectory pd = business.getPersonDirectory();
+        
+        for (Person p : pd.getPersonList()) {
+            Object[] row = new Object[5];
+            row[0] = p; // Person object (toString returns name)
+            row[1] = p.getPersonId();
+            row[2] = p.getEmail();
+            row[3] = p.getPhone();
+            row[4] = p.getAddress();
+
+            ((DefaultTableModel) PersonTable.getModel()).addRow(row);
+        }
     }
 
 
@@ -40,6 +71,8 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        PersonTable = new javax.swing.JTable();
         Back = new javax.swing.JButton();
         Next = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -47,6 +80,32 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(0, 153, 153));
         setLayout(null);
+
+        PersonTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "Person ID", "Email", "Phone", "Address"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        PersonTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                PersonTableMousePressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(PersonTable);
+
+        add(jScrollPane1);
+        jScrollPane1.setBounds(20, 80, 560, 160);
 
         Back.setText("<< Back");
         Back.addActionListener(new java.awt.event.ActionListener() {
@@ -77,28 +136,44 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
-        // TODO add your handling code here:
+        // Navigate back to admin dashboard
         CardSequencePanel.remove(this);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
- //       ((java.awt.CardLayout)CardSequencePanel.getLayout()).show(CardSequencePanel, "IdentifyEventTypes");
 
     }//GEN-LAST:event_BackActionPerformed
 
     private void NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextActionPerformed
-        // TODO add your handling code here:
+        // Navigate to person profile - Author: Akira Hanada
+        if (selectedPerson == null) {
+            JOptionPane.showMessageDialog(this, 
+                "Please select a person from the table first.", 
+                "No Selection", 
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
-        AdministerPersonJPanel mppd = new AdministerPersonJPanel(business, CardSequencePanel);
+        AdministerPersonJPanel mppd = new AdministerPersonJPanel(business, CardSequencePanel, selectedPerson);
         CardSequencePanel.add(mppd);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 
     }//GEN-LAST:event_NextActionPerformed
 
+    private void PersonTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PersonTableMousePressed
+        // Select person from table - Author: Akira Hanada
+        int selectedrow = PersonTable.getSelectedRow();
+        if (selectedrow >= 0) {
+            selectedPerson = (Person) PersonTable.getValueAt(selectedrow, 0);
+        }
+    }//GEN-LAST:event_PersonTableMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
     private javax.swing.JButton Next;
+    private javax.swing.JTable PersonTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
 }
