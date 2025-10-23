@@ -4,11 +4,11 @@
  * and open the template in the editor.
  * @author Akira Hanada
  */
-package UserInterface.WorkAreas.AdminRole.ManagePersonnelWorkResp;
+package UserInterface.WorkAreas.AdminRole;
 
 import Business.Business;
 import Business.Person.Person;
-import Business.Person.PersonDirectory;
+import Business.UserAccounts.UserAccount;
 
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
@@ -17,23 +17,26 @@ import javax.swing.JOptionPane;
  *
  * @author Akira Hanada
  */
-public class AdministerPersonJPanel extends javax.swing.JPanel {
+public class MyProfileJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ManageSuppliersJPanel
-     */
     JPanel CardSequencePanel;
     Business business;
-    Person selectedPerson;
+    UserAccount loggedInUser;
+    Person person;
 
-    public AdministerPersonJPanel(Business bz, JPanel jp, Person person) {
+    public MyProfileJPanel(Business bz, JPanel jp, UserAccount ua) {
 
         CardSequencePanel = jp;
         this.business = bz;
-        this.selectedPerson = person;
+        this.loggedInUser = ua;
+        
+        if (loggedInUser != null && loggedInUser.getAssociatedPersonProfile() != null) {
+            this.person = loggedInUser.getAssociatedPersonProfile().getPerson();
+        }
+        
         initComponents();
         
-        if (selectedPerson != null) {
+        if (person != null) {
             populateFields();
         }
     }
@@ -43,12 +46,13 @@ public class AdministerPersonJPanel extends javax.swing.JPanel {
      * @author Akira Hanada
      */
     private void populateFields() {
-        if (selectedPerson != null) {
-            PersonIDTextField.setText(selectedPerson.getPersonId());
-            NameTextField.setText(selectedPerson.getName());
-            EmailTextField.setText(selectedPerson.getEmail());
-            PhoneTextField.setText(selectedPerson.getPhone());
-            AddressTextArea.setText(selectedPerson.getAddress());
+        if (person != null) {
+            UsernameTextField.setText(loggedInUser.getUserLoginName());
+            PersonIDTextField.setText(person.getPersonId());
+            NameTextField.setText(person.getName());
+            EmailTextField.setText(person.getEmail());
+            PhoneTextField.setText(person.getPhone());
+            AddressTextArea.setText(person.getAddress());
         }
     }
 
@@ -67,6 +71,8 @@ public class AdministerPersonJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        UsernameTextField = new javax.swing.JTextField();
         PersonIDTextField = new javax.swing.JTextField();
         NameTextField = new javax.swing.JTextField();
         EmailTextField = new javax.swing.JTextField();
@@ -80,55 +86,65 @@ public class AdministerPersonJPanel extends javax.swing.JPanel {
         setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel2.setText("Manage Person Profile");
+        jLabel2.setText("My Profile");
         add(jLabel2);
         jLabel2.setBounds(21, 20, 550, 29);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("Person ID:");
+        jLabel3.setText("Username:");
         add(jLabel3);
         jLabel3.setBounds(30, 70, 100, 20);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("Name:");
+        jLabel4.setText("Person ID:");
         add(jLabel4);
         jLabel4.setBounds(30, 100, 100, 20);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setText("Email:");
+        jLabel5.setText("Name:");
         add(jLabel5);
         jLabel5.setBounds(30, 130, 100, 20);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel6.setText("Phone:");
+        jLabel6.setText("Email:");
         add(jLabel6);
         jLabel6.setBounds(30, 160, 100, 20);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setText("Address:");
+        jLabel7.setText("Phone:");
         add(jLabel7);
         jLabel7.setBounds(30, 190, 100, 20);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setText("Address:");
+        add(jLabel8);
+        jLabel8.setBounds(30, 220, 100, 20);
+
+        UsernameTextField.setEditable(false);
+        UsernameTextField.setBackground(new java.awt.Color(240, 240, 240));
+        add(UsernameTextField);
+        UsernameTextField.setBounds(140, 70, 300, 25);
 
         PersonIDTextField.setEditable(false);
         PersonIDTextField.setBackground(new java.awt.Color(240, 240, 240));
         add(PersonIDTextField);
-        PersonIDTextField.setBounds(140, 70, 300, 25);
+        PersonIDTextField.setBounds(140, 100, 300, 25);
 
         add(NameTextField);
-        NameTextField.setBounds(140, 100, 300, 25);
+        NameTextField.setBounds(140, 130, 300, 25);
 
         add(EmailTextField);
-        EmailTextField.setBounds(140, 130, 300, 25);
+        EmailTextField.setBounds(140, 160, 300, 25);
 
         add(PhoneTextField);
-        PhoneTextField.setBounds(140, 160, 300, 25);
+        PhoneTextField.setBounds(140, 190, 300, 25);
 
         AddressTextArea.setColumns(20);
         AddressTextArea.setRows(3);
         jScrollPane1.setViewportView(AddressTextArea);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(140, 190, 300, 60);
+        jScrollPane1.setBounds(140, 220, 300, 60);
 
         SaveButton.setBackground(new java.awt.Color(51, 153, 255));
         SaveButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -140,7 +156,7 @@ public class AdministerPersonJPanel extends javax.swing.JPanel {
             }
         });
         add(SaveButton);
-        SaveButton.setBounds(370, 270, 70, 32);
+        SaveButton.setBounds(370, 300, 70, 32);
 
         Back.setText("<< Back");
         Back.addActionListener(new java.awt.event.ActionListener() {
@@ -149,18 +165,18 @@ public class AdministerPersonJPanel extends javax.swing.JPanel {
             }
         });
         add(Back);
-        Back.setBounds(30, 270, 76, 32);
+        Back.setBounds(30, 300, 76, 32);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
-        // Navigate back to person list
+        // Navigate back to admin dashboard
         CardSequencePanel.remove(this);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 
     }//GEN-LAST:event_BackActionPerformed
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
-        // Save person profile - Author: Akira Hanada
+        // Save admin profile - Author: Akira Hanada
         
         // Validate inputs
         String name = NameTextField.getText();
@@ -186,14 +202,14 @@ public class AdministerPersonJPanel extends javax.swing.JPanel {
         
         try {
             // Update person information
-            if (selectedPerson != null) {
-                selectedPerson.setName(name.trim());
-                selectedPerson.setEmail(email.trim());
-                selectedPerson.setPhone(phone.trim());
-                selectedPerson.setAddress(address.trim());
+            if (person != null) {
+                person.setName(name.trim());
+                person.setEmail(email.trim());
+                person.setPhone(phone.trim());
+                person.setAddress(address.trim());
                 
                 JOptionPane.showMessageDialog(this, 
-                    "Person profile updated successfully!", 
+                    "Your profile has been updated successfully!", 
                     "Success", 
                     JOptionPane.INFORMATION_MESSAGE);
             }
@@ -204,7 +220,7 @@ public class AdministerPersonJPanel extends javax.swing.JPanel {
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, 
-                "Error updating person profile: " + e.getMessage(), 
+                "Error updating profile: " + e.getMessage(), 
                 "Update Error", 
                 JOptionPane.ERROR_MESSAGE);
         }
@@ -219,12 +235,14 @@ public class AdministerPersonJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField PersonIDTextField;
     private javax.swing.JTextField PhoneTextField;
     private javax.swing.JButton SaveButton;
+    private javax.swing.JTextField UsernameTextField;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 

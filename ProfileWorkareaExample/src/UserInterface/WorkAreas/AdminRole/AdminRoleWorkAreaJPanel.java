@@ -11,10 +11,12 @@
 package UserInterface.WorkAreas.AdminRole;
 
 import Business.Business;
+import Business.UserAccounts.UserAccount;
 import UserInterface.WorkAreas.AdminRole.AdministerUserAccountsWorkResp.ManageUserAccountsJPanel;
 import UserInterface.WorkAreas.AdminRole.ManagePersonnelWorkResp.ManagePersonsJPanel;
 
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,15 +26,17 @@ public class AdminRoleWorkAreaJPanel extends javax.swing.JPanel {
 
     javax.swing.JPanel CardSequencePanel;
     Business business;
+    UserAccount loggedInUser;
 
     /**
      * Creates new form UnitRiskWorkArea
      */
 
-    public AdminRoleWorkAreaJPanel(Business b, JPanel clp) {
+    public AdminRoleWorkAreaJPanel(Business b, JPanel clp, UserAccount ua) {
 
         business = b;
         this.CardSequencePanel = clp;
+        this.loggedInUser = ua;
         initComponents();
 
     }
@@ -185,6 +189,10 @@ public class AdminRoleWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton6IdentifyEventsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6IdentifyEventsActionPerformed
+        // Navigate to My Profile - Author: Akira Hanada
+        MyProfileJPanel mpp = new MyProfileJPanel(business, CardSequencePanel, loggedInUser);
+        CardSequencePanel.add("My Profile", mpp);
+        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
     }//GEN-LAST:event_jButton6IdentifyEventsActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed

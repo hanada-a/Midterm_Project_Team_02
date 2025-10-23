@@ -2,6 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ * @author Akira Hanada
  */
 package Business.Profiles;
 
@@ -22,7 +23,7 @@ public class EmployeeDirectory {
     public EmployeeDirectory(Business d) {
 
         business = d;
-        employeelist = new ArrayList();
+        employeelist = new ArrayList<>();
 
     }
 
@@ -43,5 +44,22 @@ public class EmployeeDirectory {
         }
             return null; //not found after going through the whole list
          }
+    
+    public ArrayList<EmployeeProfile> getEmployeeList() {
+        return employeelist;
+    }
+
+    /**
+     * Delete an employee profile
+     * @author Akira Hanada
+     */
+    public boolean deleteEmployee(String id) {
+        EmployeeProfile employee = findEmployee(id);
+        if (employee != null) {
+            employeelist.remove(employee);
+            return true;
+        }
+        return false;
+    }
     
 }
