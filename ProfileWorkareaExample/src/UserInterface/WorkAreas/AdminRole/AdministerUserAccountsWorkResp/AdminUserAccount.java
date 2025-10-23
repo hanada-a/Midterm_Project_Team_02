@@ -2,18 +2,15 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- * @author Akira Hanada
  */
 package UserInterface.WorkAreas.AdminRole.AdministerUserAccountsWorkResp;
 
-import Business.Person.Person;
 import Business.UserAccounts.UserAccount;
 import javax.swing.JPanel;
-import javax.swing.JOptionPane;
 
 /**
- *
- * @author Akira Hanada
+ *h
+ * @author kal bugrara
  */
 
 public class AdminUserAccount extends javax.swing.JPanel {
@@ -22,6 +19,7 @@ public class AdminUserAccount extends javax.swing.JPanel {
      * Creates new form ManageSuppliersJPanel
      */
     JPanel CardSequencePanel;
+
     UserAccount selecteduseraccount;
 
     public AdminUserAccount(UserAccount sua, JPanel jp) {
@@ -29,27 +27,8 @@ public class AdminUserAccount extends javax.swing.JPanel {
         CardSequencePanel = jp;
         selecteduseraccount= sua;
         initComponents();
-        populateFields();
+        //display user details here
 
-    }
-
-    /**
-     * Populate form fields with user account data
-     * @author Akira Hanada
-     */
-    private void populateFields() {
-        if (selecteduseraccount != null) {
-            Person person = selecteduseraccount.getAssociatedPersonProfile().getPerson();
-            
-            UsernameTextField.setText(selecteduseraccount.getUserLoginName());
-            NameTextField.setText(person.getName());
-            EmailTextField.setText(person.getEmail());
-            PhoneTextField.setText(person.getPhone());
-            RoleTextField.setText(selecteduseraccount.getRole());
-            AddressTextArea.setText(person.getAddress());
-            // Don't populate password for security reasons
-            PasswordTextField.setText("");
-        }
     }
 
     /**
@@ -61,209 +40,58 @@ public class AdminUserAccount extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BackButton = new javax.swing.JButton();
+        Back = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        UpdateButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        UsernameTextField = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        NameTextField = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        EmailTextField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        PhoneTextField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        PasswordTextField = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        RoleTextField = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        AddressTextArea = new javax.swing.JTextArea();
+        Back1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
         setLayout(null);
 
-        BackButton.setText("<< Back");
-        BackButton.addActionListener(new java.awt.event.ActionListener() {
+        Back.setText("Update>>");
+        Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackButtonActionPerformed(evt);
+                BackActionPerformed(evt);
             }
         });
-        add(BackButton);
-        BackButton.setBounds(40, 420, 100, 32);
+        add(Back);
+        Back.setBounds(480, 290, 100, 32);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel2.setText("Administer User Account");
         add(jLabel2);
         jLabel2.setBounds(21, 20, 550, 29);
 
-        UpdateButton.setBackground(new java.awt.Color(51, 153, 51));
-        UpdateButton.setForeground(new java.awt.Color(255, 255, 255));
-        UpdateButton.setText("Update");
-        UpdateButton.addActionListener(new java.awt.event.ActionListener() {
+        Back1.setText("<< Back");
+        Back1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpdateButtonActionPerformed(evt);
+                Back1ActionPerformed(evt);
             }
         });
-        add(UpdateButton);
-        UpdateButton.setBounds(650, 420, 100, 32);
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel3.setText("Username:");
-        add(jLabel3);
-        jLabel3.setBounds(40, 70, 120, 16);
-
-        UsernameTextField.setEditable(false);
-        UsernameTextField.setBackground(new java.awt.Color(220, 220, 220));
-        add(UsernameTextField);
-        UsernameTextField.setBounds(180, 70, 250, 25);
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel4.setText("Name:");
-        add(jLabel4);
-        jLabel4.setBounds(40, 110, 120, 16);
-        add(NameTextField);
-        NameTextField.setBounds(180, 110, 250, 25);
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel5.setText("Email:");
-        add(jLabel5);
-        jLabel5.setBounds(40, 150, 120, 16);
-        add(EmailTextField);
-        EmailTextField.setBounds(180, 150, 250, 25);
-
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel6.setText("Phone:");
-        add(jLabel6);
-        jLabel6.setBounds(40, 190, 120, 16);
-        add(PhoneTextField);
-        PhoneTextField.setBounds(180, 190, 250, 25);
-
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel7.setText("Password:");
-        add(jLabel7);
-        jLabel7.setBounds(40, 230, 120, 16);
-
-        PasswordTextField.setToolTipText("Leave blank to keep current password");
-        add(PasswordTextField);
-        PasswordTextField.setBounds(180, 230, 250, 25);
-
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel8.setText("Role:");
-        add(jLabel8);
-        jLabel8.setBounds(40, 270, 120, 16);
-
-        RoleTextField.setEditable(false);
-        RoleTextField.setBackground(new java.awt.Color(220, 220, 220));
-        add(RoleTextField);
-        RoleTextField.setBounds(180, 270, 250, 25);
-
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel9.setText("Address:");
-        add(jLabel9);
-        jLabel9.setBounds(40, 310, 120, 16);
-
-        AddressTextArea.setColumns(20);
-        AddressTextArea.setRows(3);
-        jScrollPane1.setViewportView(AddressTextArea);
-
-        add(jScrollPane1);
-        jScrollPane1.setBounds(180, 310, 250, 70);
+        add(Back1);
+        Back1.setBounds(40, 290, 100, 32);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
-        // Navigate back to user accounts list
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
+        // TODO add your handling code here:
+
         CardSequencePanel.remove(this);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-    }//GEN-LAST:event_BackButtonActionPerformed
 
-    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
-        // Update user account - Author: Akira Hanada
-        
-        // Validate inputs
-        String name = NameTextField.getText();
-        String email = EmailTextField.getText();
-        String phone = PhoneTextField.getText();
-        String password = PasswordTextField.getText();
-        String address = AddressTextArea.getText();
-        
-        if (name == null || name.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Name is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        if (email == null || email.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Email is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        // Basic email validation
-        if (!email.contains("@") || !email.contains(".")) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid email address.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        try {
-            // Update person information
-            Person person = selecteduseraccount.getAssociatedPersonProfile().getPerson();
-            person.setName(name.trim());
-            person.setEmail(email.trim());
-            person.setPhone(phone.trim());
-            person.setAddress(address.trim());
-            
-            // Update password if provided
-            if (password != null && !password.trim().isEmpty()) {
-                if (password.length() < 6) {
-                    JOptionPane.showMessageDialog(this, 
-                        "Password must be at least 6 characters.", 
-                        "Validation Error", 
-                        JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-                // Note: Password update would require adding a setter in UserAccount class
-                JOptionPane.showMessageDialog(this, 
-                    "Note: Password update feature requires additional implementation.\nOther details have been updated successfully.", 
-                    "Partial Update", 
-                    JOptionPane.INFORMATION_MESSAGE);
-            }
-            
-            JOptionPane.showMessageDialog(this, 
-                "User account updated successfully!", 
-                "Success", 
-                JOptionPane.INFORMATION_MESSAGE);
-                
-            // Navigate back
-            CardSequencePanel.remove(this);
-            ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, 
-                "Error updating user account: " + e.getMessage(), 
-                "Update Error", 
-                JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_UpdateButtonActionPerformed
+    }//GEN-LAST:event_BackActionPerformed
+
+    private void Back1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Back1ActionPerformed
+        // TODO add your handling code here:
+         CardSequencePanel.remove(this);
+        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+
+
+    }//GEN-LAST:event_Back1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea AddressTextArea;
-    private javax.swing.JButton BackButton;
-    private javax.swing.JTextField EmailTextField;
-    private javax.swing.JTextField NameTextField;
-    private javax.swing.JTextField PasswordTextField;
-    private javax.swing.JTextField PhoneTextField;
-    private javax.swing.JTextField RoleTextField;
-    private javax.swing.JButton UpdateButton;
-    private javax.swing.JTextField UsernameTextField;
+    private javax.swing.JButton Back;
+    private javax.swing.JButton Back1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
 }

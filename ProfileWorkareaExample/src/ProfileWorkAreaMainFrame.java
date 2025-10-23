@@ -2,11 +2,9 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- * @author Akira Hanada
  */
+package Business;
 
-import Business.Business;
-import Business.ConfigureABusiness;
 import Business.Profiles.EmployeeProfile;
 import Business.Profiles.Profile;
 import Business.Profiles.StudentProfile;
@@ -151,7 +149,7 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
 
         if (profile instanceof EmployeeProfile) {
 
-            adminworkarea = new AdminRoleWorkAreaJPanel(business, CardSequencePanel, useraccount);
+            adminworkarea = new AdminRoleWorkAreaJPanel(business, CardSequencePanel);
             CardSequencePanel.removeAll();
             CardSequencePanel.add("Admin", adminworkarea);
             ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
