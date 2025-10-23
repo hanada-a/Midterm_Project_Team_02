@@ -6,6 +6,7 @@
 package Business;
 
 import Business.Profiles.EmployeeProfile;
+import Business.Profiles.FacultyProfile;
 import Business.Profiles.Profile;
 import Business.Profiles.StudentProfile;
 
@@ -137,12 +138,17 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
 
         UserAccountDirectory uad = business.getUserAccountDirectory();
         UserAccount useraccount = uad.AuthenticateUser(un, pw);
+        
         if (useraccount == null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Invalid username or password", 
+                "Error",javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
         StudentWorkAreaJPanel studentworkareajpanel;
         FacultyWorkAreaJPanel facultyworkarea;
         AdminRoleWorkAreaJPanel adminworkarea;
+        
         String r = useraccount.getRole();
         Profile profile = useraccount.getAssociatedPersonProfile();
 
@@ -166,14 +172,16 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
 
         }
 
- /*      if (profile instanceof FacultyProfile) {
-            facultyworkarea = new FacultyWorkAreaJPanel(business, CardSequencePanel);
+       if (profile instanceof FacultyProfile) {
+           
+            FacultyProfile fpp = (FacultyProfile) profile;
+            facultyworkarea = new FacultyWorkAreaJPanel(business, fpp, CardSequencePanel);
             CardSequencePanel.removeAll();
             CardSequencePanel.add("faculty", facultyworkarea);
             ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 
         }
-*/
+
 
     }//GEN-LAST:event_LoginButtonActionPerformed
 
