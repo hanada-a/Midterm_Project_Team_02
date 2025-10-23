@@ -54,10 +54,9 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
 
             Object[] row = new Object[5];
             row[0] = ua;
-            row[1] = ua.getRole(); // Role column - Author: Akira Hanada
-            row[2] = ua.getAssociatedPersonProfile().getPerson().getName(); // Person Name
-            row[3] = "Active"; // Status - can be enhanced later
- //           row[4] = ua.getLastUpdated() // Last Updated - can be added later
+ //           row[1] = ua.getStatus(); //complete this..
+ //           row[2] = ua.getLastUpdated()
+ //           row[3] = 
 
             ((DefaultTableModel) UserAccountTable.getModel()).addRow(row);
         }
@@ -120,17 +119,9 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "User Name", "Role", "Person Name", "Status"
+                "User Name", "Status", "Last Activity", "Last Updated"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         UserAccountTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 UserAccountTableMousePressed(evt);
