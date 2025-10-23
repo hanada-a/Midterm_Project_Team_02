@@ -9,6 +9,8 @@ package UserInterface.WorkAreas.AdminRole.ManagePersonnelWorkResp;
 import Business.Business;
 import Business.Person.Person;
 import Business.Person.PersonDirectory;
+import Business.UserAccounts.UserAccount;
+import Business.UserAccounts.UserAccountDirectory;
 
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
@@ -48,14 +50,23 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
         }
 
         PersonDirectory pd = business.getPersonDirectory();
+        UserAccountDirectory uad = business.getUserAccountDirectory();
         
         for (Person p : pd.getPersonList()) {
-            Object[] row = new Object[5];
+            Object[] row = new Object[6];
             row[0] = p; // Person object (toString returns name)
             row[1] = p.getPersonId();
             row[2] = p.getEmail();
             row[3] = p.getPhone();
             row[4] = p.getAddress();
+            
+            // Find role from user account
+            String role = "N/A";
+            UserAccount ua = uad.findUserAccount(p.getPersonId());
+            if (ua != null) {
+                role = ua.getRole();
+            }
+            row[5] = role;
 
             ((DefaultTableModel) PersonTable.getModel()).addRow(row);
         }
@@ -86,11 +97,11 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Name", "Person ID", "Email", "Phone", "Address"
+                "Name", "Person ID", "Email", "Phone", "Address", "Role"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
