@@ -25,7 +25,7 @@ public class CourseOffer {
     }
 
     public Seat newSeat() {
-        Seat s = new Seat(this);
+        Seat s = new Seat(this,null);
         seatlist.add(s);
         return s;
     }
