@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="76fe98db-127b-4634-812a-32bc4cde7bf7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ProfileWorkareaExample/build/classes/UserInterface/WorkAreas/FacultyRole/Course.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProfileWorkareaExample/src/UserInterface/WorkAreas/FacultyRole/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProfileWorkareaExample/build/classes/Business/Profiles/FacultyProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/ProfileWorkareaExample/build/classes/Business/Profiles/FacultyProfile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProfileWorkareaExample/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProfileWorkareaExample/nbproject/private/private.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;maxwellsowell&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/hanada-a/Midterm_Project_Team_02.git&quot;,
+    &quot;accountId&quot;: &quot;4072bf3f-f08d-4e58-87ce-50a3f5ae07e0&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file:///private/var/folders/wy/2lrvjmrs407gg9d5czxsbksr0000gn/T/tmp_1_FacultyDirectory.class" root0="SKIP_INSPECTION" />
+    <setting file="file:///private/var/folders/wy/2lrvjmrs407gg9d5czxsbksr0000gn/T/tmp_2_FacultyDirectory.class" root0="SKIP_INSPECTION" />
+    <setting file="file:///private/var/folders/wy/2lrvjmrs407gg9d5czxsbksr0000gn/T/tmp__FacultyDirectory.class" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="34Uvzn2ncwEtHbGftsqzZ6iCj5O" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Maxwell-feature-faculty-use-case",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/maxwellsowell/Northeastern/INFO5100/GitHub/sowell_maxwell_003188473_assignments/Midterm_Project_Team_02",
+    "settings.editor.selected.configurable": "preferences.keymap"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Midterm_Project_Team_02" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Midterm_Project_Team_02" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="76fe98db-127b-4634-812a-32bc4cde7bf7" name="Changes" comment="" />
+      <created>1761281229412</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1761281229412</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
+  </component>
+</project>
