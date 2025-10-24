@@ -26,7 +26,6 @@ public class Business {
     FacultyDirectory facultydirectory;
     UserAccountDirectory useraccountdirectory;
     StudentDirectory studentdirectory;
-    FacultyDirectory facultydirectory;
     
 
 
@@ -64,8 +63,5 @@ public class Business {
         return studentdirectory;
     }
 
-    public FacultyDirectory getFacultyDirectory() {
-        return facultydirectory;
-    }
 
 }

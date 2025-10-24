@@ -7,7 +7,6 @@
     <list default="true" id="76fe98db-127b-4634-812a-32bc4cde7bf7" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/ProfileWorkareaExample/build/classes/UserInterface/WorkAreas/FacultyRole/Course.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ProfileWorkareaExample/src/UserInterface/WorkAreas/FacultyRole/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProfileWorkareaExample/build/classes/Business/Profiles/FacultyProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/ProfileWorkareaExample/build/classes/Business/Profiles/FacultyProfile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProfileWorkareaExample/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProfileWorkareaExample/nbproject/private/private.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,17 +42,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Maxwell-feature-faculty-use-case",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/maxwellsowell/Northeastern/INFO5100/GitHub/sowell_maxwell_003188473_assignments/Midterm_Project_Team_02",
-    "settings.editor.selected.configurable": "preferences.keymap"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Maxwell-feature-faculty-use-case&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/maxwellsowell/Northeastern/INFO5100/GitHub/sowell_maxwell_003188473_assignments/Midterm_Project_Team_02&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Midterm_Project_Team_02" />
