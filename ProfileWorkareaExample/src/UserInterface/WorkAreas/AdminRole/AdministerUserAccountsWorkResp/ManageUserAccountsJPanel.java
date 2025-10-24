@@ -218,7 +218,7 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
         
         if (confirm == JOptionPane.YES_OPTION) {
             UserAccountDirectory uad = business.getUserAccountDirectory();
-            boolean success = uad.deleteUserAccount(selecteduseraccount.getUserLoginName());
+            boolean success = uad.deleteUserAccount(selecteduseraccount.getPersonId());
             
             if (success) {
                 JOptionPane.showMessageDialog(this, 
