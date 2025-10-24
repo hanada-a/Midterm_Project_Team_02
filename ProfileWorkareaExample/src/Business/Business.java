@@ -37,6 +37,7 @@ public class Business {
         facultydirectory = new FacultyDirectory(this);
         useraccountdirectory = new UserAccountDirectory();
         studentdirectory = new StudentDirectory();
+        facultydirectory = new FacultyDirectory(this);
 
 
     }
@@ -61,5 +62,6 @@ public class Business {
     public StudentDirectory getStudentDirectory(){
         return studentdirectory;
     }
+
 
 }

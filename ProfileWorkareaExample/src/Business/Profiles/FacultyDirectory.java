@@ -14,6 +14,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Akira Hanada
+ * @author maxwellsowell
  */
 public class FacultyDirectory {
 
@@ -70,5 +71,5 @@ public class FacultyDirectory {
         }
         return false;
     }
-    
+
 }

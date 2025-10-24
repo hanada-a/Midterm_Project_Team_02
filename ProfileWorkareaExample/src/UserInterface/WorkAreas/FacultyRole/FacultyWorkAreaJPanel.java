@@ -11,6 +11,7 @@
 package UserInterface.WorkAreas.FacultyRole;
 
 import Business.Business;
+import Business.Profiles.FacultyProfile;
 import UserInterface.WorkAreas.AdminRole.ManagePersonnelWorkResp.ManagePersonsJPanel;
 import javax.swing.JPanel;
 
@@ -22,15 +23,17 @@ public class FacultyWorkAreaJPanel extends javax.swing.JPanel {
 
     javax.swing.JPanel CardSequencePanel;
     Business business;
+    FacultyProfile faculty;
 
     /**
      * Creates new form UnitRiskWorkArea
      */
 
-    public FacultyWorkAreaJPanel(Business b, JPanel clp) {
+    public FacultyWorkAreaJPanel(Business b, FacultyProfile fpp, JPanel clp) {
 
         business = b;
         this.CardSequencePanel = clp;
+        faculty = fpp;
         initComponents();
 
     }

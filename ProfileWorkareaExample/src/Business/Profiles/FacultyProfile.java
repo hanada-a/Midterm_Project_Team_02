@@ -11,6 +11,7 @@ import Business.Person.Person;
 /**
  *
  * @author Akira Hanada
+ * @author maxwellsowell
  */
 public class FacultyProfile extends Profile {
 
