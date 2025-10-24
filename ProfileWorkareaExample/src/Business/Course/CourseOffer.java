@@ -30,9 +30,15 @@ public class CourseOffer {
         return s;
     }
     
-    public int getEnrolledCount() {
+    public int getSeatCount() {
         return seatlist.size();
     }
+    
+    
+    ///////////////////////////////////////
+    // TODO: need getEnrolledCount() too //
+    ///////////////////////////////////////
+    
     
     public boolean isMatch(String courseNumber, String semester) {
         return course.isMatch(courseNumber) && this.semester.equals(semester);
