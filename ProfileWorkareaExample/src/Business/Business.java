@@ -2,6 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ * @author Akira Hanada
  */
 package Business;
 
@@ -22,6 +23,7 @@ public class Business {
     PersonDirectory persondirectory; //all people profiles regardless of the role
 
     EmployeeDirectory employeedirectory;
+    FacultyDirectory facultydirectory;
     UserAccountDirectory useraccountdirectory;
     StudentDirectory studentdirectory;
     FacultyDirectory facultydirectory;
@@ -33,6 +35,7 @@ public class Business {
 
         persondirectory = new PersonDirectory();
         employeedirectory = new EmployeeDirectory(this);
+        facultydirectory = new FacultyDirectory(this);
         useraccountdirectory = new UserAccountDirectory();
         studentdirectory = new StudentDirectory();
         facultydirectory = new FacultyDirectory(this);
@@ -51,6 +54,10 @@ public class Business {
 
     public EmployeeDirectory getEmployeeDirectory() {
         return employeedirectory;
+    }
+
+    public FacultyDirectory getFacultyDirectory() {
+        return facultydirectory;
     }
 
     public StudentDirectory getStudentDirectory(){

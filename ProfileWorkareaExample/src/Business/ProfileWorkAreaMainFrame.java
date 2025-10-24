@@ -4,9 +4,8 @@
  * and open the template in the editor.
  * @author Akira Hanada
  */
+package Business;
 
-import Business.Business;
-import Business.ConfigureABusiness;
 import Business.Profiles.EmployeeProfile;
 import Business.Profiles.FacultyProfile;
 import Business.Profiles.Profile;
@@ -19,6 +18,7 @@ import UserInterface.WorkAreas.AdminRole.AdminRoleWorkAreaJPanel;
 import UserInterface.WorkAreas.FacultyRole.FacultyWorkAreaJPanel;
 import UserInterface.WorkAreas.StudentRole.StudentWorkAreaJPanel;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -78,7 +78,7 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
 
         UserNameTextField.setText("admin");
 
-        PasswordTextField.setText("****");
+        PasswordTextField.setText("admin123");
         PasswordTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PasswordTextFieldActionPerformed(evt);
@@ -132,58 +132,67 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        // TODO add your handling code here:
-        //      WorkAreaJPanel ura = new WorkAreaJPanel(workareajpanl);
-
+        // Login authentication - Author: Akira Hanada
+        
         String un = UserNameTextField.getText();
         String pw = PasswordTextField.getText();
+
+        // Validate input
+        if (un == null || un.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, 
+                "Please enter a username.", 
+                "Login Error", 
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (pw == null || pw.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, 
+                "Please enter a password.", 
+                "Login Error", 
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         UserAccountDirectory uad = business.getUserAccountDirectory();
         UserAccount useraccount = uad.AuthenticateUser(un, pw);
         
         if (useraccount == null) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Invalid username or password", 
-                "Error",javax.swing.JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, 
+                "Invalid username or password.\n\nTest Credentials:\nAdmin: admin/admin123\nFaculty: gina/faculty123\nStudent: adam/student123", 
+                "Authentication Failed", 
+                JOptionPane.ERROR_MESSAGE);
             return;
         }
         
-        StudentWorkAreaJPanel studentworkareajpanel;
-        FacultyWorkAreaJPanel facultyworkarea;
-        AdminRoleWorkAreaJPanel adminworkarea;
-        
-        String r = useraccount.getRole();
         Profile profile = useraccount.getAssociatedPersonProfile();
 
-
+        // Route to appropriate work area based on profile type
         if (profile instanceof EmployeeProfile) {
-
-            adminworkarea = new AdminRoleWorkAreaJPanel(business, CardSequencePanel, useraccount);
+            AdminRoleWorkAreaJPanel adminworkarea = new AdminRoleWorkAreaJPanel(business, CardSequencePanel, useraccount);
             CardSequencePanel.removeAll();
             CardSequencePanel.add("Admin", adminworkarea);
             ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-
         }
-        
-        if (profile instanceof StudentProfile) {
-
-            StudentProfile spp = (StudentProfile) profile;
-            studentworkareajpanel = new StudentWorkAreaJPanel(business, spp, CardSequencePanel);
-            CardSequencePanel.removeAll();
-            CardSequencePanel.add("student", studentworkareajpanel);
-            ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-
-        }
-
-       if (profile instanceof FacultyProfile) {
-           
-            FacultyProfile fpp = (FacultyProfile) profile;
-            facultyworkarea = new FacultyWorkAreaJPanel(business, fpp, CardSequencePanel);
+        else if (profile instanceof FacultyProfile) {
+            FacultyWorkAreaJPanel facultyworkarea = new FacultyWorkAreaJPanel(business, CardSequencePanel);
             CardSequencePanel.removeAll();
             CardSequencePanel.add("faculty", facultyworkarea);
             ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-
         }
-
+        else if (profile instanceof StudentProfile) {
+            StudentProfile spp = (StudentProfile) profile;
+            StudentWorkAreaJPanel studentworkareajpanel = new StudentWorkAreaJPanel(business, spp, CardSequencePanel);
+            CardSequencePanel.removeAll();
+            CardSequencePanel.add("student", studentworkareajpanel);
+            ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+        }
+        else {
+            JOptionPane.showMessageDialog(this, 
+                "Unknown user profile type.", 
+                "Login Error", 
+                JOptionPane.ERROR_MESSAGE);
+        }
 
     }//GEN-LAST:event_LoginButtonActionPerformed
 
