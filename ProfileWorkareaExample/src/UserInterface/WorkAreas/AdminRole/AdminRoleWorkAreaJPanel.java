@@ -15,6 +15,7 @@ import Business.UserAccounts.UserAccount;
 import UserInterface.WorkAreas.AdminRole.AdministerUserAccountsWorkResp.ManageUserAccountsJPanel;
 import UserInterface.WorkAreas.AdminRole.ManagePersonnelWorkResp.ManagePersonsJPanel;
 import UserInterface.WorkAreas.AdminRole.ManageStudentsWorkResp.ManageStudentsJPanel;
+import UserInterface.WorkAreas.AdminRole.ManageFacultyWorkResp.ManageFacultyJPanel;
 
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
@@ -199,6 +200,10 @@ public class AdminRoleWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton6IdentifyEventsActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // Navigate to Manage Faculty - Author: Akira Hanada
+        ManageFacultyJPanel mfp = new ManageFacultyJPanel(business, CardSequencePanel);
+        CardSequencePanel.add("Manage Faculty", mfp);
+        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
     }//GEN-LAST:event_jButton9ActionPerformed
 
 
