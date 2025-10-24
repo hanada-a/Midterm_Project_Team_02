@@ -9,8 +9,8 @@ import Business.Business;
 import Business.UserAccounts.UserAccount;
 import Business.UserAccounts.UserAccountDirectory;
 
-
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -80,6 +80,8 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         UserAccountTable = new javax.swing.JTable();
+        CreateButton = new javax.swing.JButton();
+        DeleteButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
         setLayout(null);
@@ -93,14 +95,14 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
         add(Back);
         Back.setBounds(30, 300, 76, 32);
 
-        Next.setText("Next >>");
+        Next.setText("View / Edit");
         Next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NextActionPerformed(evt);
             }
         });
         add(Next);
-        Next.setBounds(500, 300, 80, 32);
+        Next.setBounds(430, 300, 100, 32);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("User Accounts");
@@ -140,6 +142,30 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1);
         jScrollPane1.setBounds(30, 110, 550, 130);
+
+        CreateButton.setBackground(new java.awt.Color(51, 153, 255));
+        CreateButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        CreateButton.setForeground(new java.awt.Color(255, 255, 255));
+        CreateButton.setText("Create");
+        CreateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CreateButtonActionPerformed(evt);
+            }
+        });
+        add(CreateButton);
+        CreateButton.setBounds(540, 300, 85, 32);
+
+        DeleteButton.setBackground(new java.awt.Color(255, 51, 51));
+        DeleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        DeleteButton.setForeground(new java.awt.Color(255, 255, 255));
+        DeleteButton.setText("Delete");
+        DeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteButtonActionPerformed(evt);
+            }
+        });
+        add(DeleteButton);
+        DeleteButton.setBounds(635, 300, 85, 32);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
@@ -151,16 +177,67 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_BackActionPerformed
 
     private void NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextActionPerformed
-        // TODO add your handling code here:
-        if(selecteduseraccount==null) return;
+        // View/Edit user account - Author: Akira Hanada
+        if(selecteduseraccount==null) {
+            JOptionPane.showMessageDialog(this, 
+                "Please select a user account from the table.", 
+                "No Selection", 
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         AdminUserAccount mppd = new AdminUserAccount(selecteduseraccount, CardSequencePanel);
         CardSequencePanel.add(mppd);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 
     }//GEN-LAST:event_NextActionPerformed
 
+    private void CreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateButtonActionPerformed
+        // Navigate to create user account form - Author: Akira Hanada
+        CreateUserAccountJPanel cuap = new CreateUserAccountJPanel(business, CardSequencePanel, this);
+        CardSequencePanel.add("Create User Account", cuap);
+        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+    }//GEN-LAST:event_CreateButtonActionPerformed
+
+    private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
+        // Delete selected user account - Author: Akira Hanada
+        if (selecteduseraccount == null) {
+            JOptionPane.showMessageDialog(this, 
+                "Please select a user account to delete.", 
+                "No Selection", 
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        int confirm = JOptionPane.showConfirmDialog(this, 
+            "Are you sure you want to delete this user account?\n" +
+            "Username: " + selecteduseraccount.getUserLoginName() + "\n" +
+            "Person: " + selecteduseraccount.getAssociatedPersonProfile().getPerson().getName(),
+            "Confirm Delete", 
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.WARNING_MESSAGE);
+        
+        if (confirm == JOptionPane.YES_OPTION) {
+            UserAccountDirectory uad = business.getUserAccountDirectory();
+            boolean success = uad.deleteUserAccount(selecteduseraccount.getUserLoginName());
+            
+            if (success) {
+                JOptionPane.showMessageDialog(this, 
+                    "User account deleted successfully!", 
+                    "Success", 
+                    JOptionPane.INFORMATION_MESSAGE);
+                selecteduseraccount = null;
+                refreshTable();
+            } else {
+                JOptionPane.showMessageDialog(this, 
+                    "Failed to delete user account.", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_DeleteButtonActionPerformed
+
     private void UserAccountTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserAccountTableMousePressed
-        // Extracts the row (uaser account) in the table that is selected by the user
+        // Extracts the row (user account) in the table that is selected by the user
         int size = UserAccountTable.getRowCount();
         int selectedrow = UserAccountTable.getSelectionModel().getLeadSelectionIndex();
 
@@ -170,16 +247,14 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
         selecteduseraccount = (UserAccount) UserAccountTable.getValueAt(selectedrow, 0);
         if (selecteduseraccount == null) {
             return;
-        
-        
-            
+        }    
     }//GEN-LAST:event_UserAccountTableMousePressed
-    
-    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
+    private javax.swing.JButton CreateButton;
+    private javax.swing.JButton DeleteButton;
     private javax.swing.JButton Next;
     private javax.swing.JTable UserAccountTable;
     private javax.swing.JLabel jLabel1;
