@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76fe98db-127b-4634-812a-32bc4cde7bf7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ProfileWorkareaExample/build/classes/UserInterface/WorkAreas/FacultyRole/Course.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProfileWorkareaExample/src/UserInterface/WorkAreas/FacultyRole/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProfileWorkareaExample/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProfileWorkareaExample/nbproject/private/private.xml" afterDir="false" />
-    </list>
+    <list default="true" id="76fe98db-127b-4634-812a-32bc4cde7bf7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
