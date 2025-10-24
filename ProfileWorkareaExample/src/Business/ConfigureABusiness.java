@@ -6,6 +6,13 @@
 */
 package Business;
 
+import Business.Course.Course;
+import Business.Course.CourseCatalog;
+import Business.Course.CourseOffer;
+import Business.Course.CourseSchedule;
+import Business.Course.FacultyAssignment;
+import Business.Course.Seat;
+import Business.Course.SeatAssignment;
 import Business.Person.Person;
 import Business.Person.PersonDirectory;
 import Business.Profiles.EmployeeDirectory;
@@ -111,6 +118,32 @@ public class ConfigureABusiness {
         uadirectory.newUserAccount(studentprofile0, "adam", "student123");
         uadirectory.newUserAccount(studentprofile1, "anna", "student123");
 
+        
+// create demo courses, semester, offers, assignments, seats
+        CourseCatalog coursecatalog = business.getCourseCatalog();
+        Course course1 = coursecatalog.newCourse("INFO5100", "Application Engineering", 4,true);
+        Course course2 = coursecatalog.newCourse("INFO6105", "Data Science Engineering", 4,false);
+        Course course3 = coursecatalog.newCourse("DAMG6210", "Database Design", 4,false);
+
+        CourseSchedule courseschedule = business.getCourseSchedule();
+        courseschedule.setSemester("Fall 2025");
+        
+        CourseOffer offer1 = courseschedule.newCourseOffer(course1,"Fall 2025");
+        CourseOffer offer2 = courseschedule.newCourseOffer(course2,"Fall 2025");
+        CourseOffer offer3 = courseschedule.newCourseOffer(course3,"Fall 2025");
+        CourseOffer offer4 = courseschedule.newCourseOffer(course1,"Spring 2026");
+        
+        FacultyAssignment fa1 = new FacultyAssignment(facultyprofile1, offer1);
+        FacultyAssignment fa2 = new FacultyAssignment(facultyprofile2, offer2);
+        FacultyAssignment fa3 = new FacultyAssignment(facultyprofile1, offer3);
+        FacultyAssignment fa4 = new FacultyAssignment(facultyprofile2, offer4);
+        
+        Seat seat1 = offer1.newSeat();
+        Seat seat2 = offer1.newSeat();
+        Seat seat3 = offer2.newSeat();
+        
+
+        
         return business;
 
     }

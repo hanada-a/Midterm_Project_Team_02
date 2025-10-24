@@ -16,6 +16,11 @@ public class CourseSchedule {
     String semester;
     ArrayList<CourseOffer> courseofferlist;
     
+    public CourseSchedule() {
+        semester = null;
+        courseofferlist = new ArrayList<>();
+    }
+    
     public CourseSchedule(String semester) {
         this.semester = semester;
         courseofferlist = new ArrayList<>();

@@ -6,6 +6,8 @@
  */
 package Business;
 
+import Business.Course.CourseCatalog;
+import Business.Course.CourseSchedule;
 import Business.Person.PersonDirectory;
 import Business.Profiles.EmployeeDirectory;
 import Business.Profiles.FacultyDirectory;
@@ -26,7 +28,9 @@ public class Business {
     FacultyDirectory facultydirectory;
     UserAccountDirectory useraccountdirectory;
     StudentDirectory studentdirectory;
-    
+    CourseCatalog coursecatalog;
+    CourseSchedule courseschedule;
+
 
 
     public Business(String n) {
@@ -37,7 +41,8 @@ public class Business {
         facultydirectory = new FacultyDirectory(this);
         useraccountdirectory = new UserAccountDirectory();
         studentdirectory = new StudentDirectory();
-        facultydirectory = new FacultyDirectory(this);
+        coursecatalog = new CourseCatalog();
+        courseschedule = new CourseSchedule();
 
 
     }
@@ -61,6 +66,14 @@ public class Business {
 
     public StudentDirectory getStudentDirectory(){
         return studentdirectory;
+    }
+
+    public CourseCatalog getCourseCatalog() {
+        return coursecatalog;
+    }
+
+    public CourseSchedule getCourseSchedule() {
+        return courseschedule;
     }
 
 
