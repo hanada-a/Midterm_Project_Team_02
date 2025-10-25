@@ -102,7 +102,7 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
             }
         });
         add(Next);
-        Next.setBounds(430, 300, 100, 32);
+        Next.setBounds(290, 300, 100, 32);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("User Accounts");
@@ -153,7 +153,7 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
             }
         });
         add(CreateButton);
-        CreateButton.setBounds(540, 300, 85, 32);
+        CreateButton.setBounds(400, 300, 85, 32);
 
         DeleteButton.setBackground(new java.awt.Color(255, 51, 51));
         DeleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -165,7 +165,7 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
             }
         });
         add(DeleteButton);
-        DeleteButton.setBounds(635, 300, 85, 32);
+        DeleteButton.setBounds(495, 300, 85, 32);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
@@ -185,7 +185,7 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
                 JOptionPane.WARNING_MESSAGE);
             return;
         }
-        AdminUserAccount mppd = new AdminUserAccount(selecteduseraccount, CardSequencePanel);
+        AdminUserAccount mppd = new AdminUserAccount(selecteduseraccount, CardSequencePanel, this);
         CardSequencePanel.add(mppd);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 

@@ -6,6 +6,7 @@
  */
 package UserInterface.WorkAreas.AdminRole.AdministerUserAccountsWorkResp;
 
+import Business.Business;
 import Business.Person.Person;
 import Business.UserAccounts.UserAccount;
 import javax.swing.JPanel;
@@ -23,11 +24,15 @@ public class AdminUserAccount extends javax.swing.JPanel {
      */
     JPanel CardSequencePanel;
     UserAccount selecteduseraccount;
+    ManageUserAccountsJPanel parentPanel;
+    Business business;
 
-    public AdminUserAccount(UserAccount sua, JPanel jp) {
+    public AdminUserAccount(UserAccount sua, JPanel jp, ManageUserAccountsJPanel parent) {
 
         CardSequencePanel = jp;
         selecteduseraccount= sua;
+        this.parentPanel = parent;
+        this.business = parent.business;
         initComponents();
         populateFields();
 
@@ -45,7 +50,7 @@ public class AdminUserAccount extends javax.swing.JPanel {
             NameTextField.setText(person.getName());
             EmailTextField.setText(person.getEmail());
             PhoneTextField.setText(person.getPhone());
-            RoleTextField.setText(selecteduseraccount.getRole());
+            RoleComboBox.setSelectedItem(selecteduseraccount.getRole());
             AddressTextArea.setText(person.getAddress());
             // Don't populate password for security reasons
             PasswordTextField.setText("");
@@ -75,7 +80,7 @@ public class AdminUserAccount extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         PasswordTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        RoleTextField = new javax.swing.JTextField();
+        RoleComboBox = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         AddressTextArea = new javax.swing.JTextArea();
@@ -106,69 +111,66 @@ public class AdminUserAccount extends javax.swing.JPanel {
             }
         });
         add(UpdateButton);
-        UpdateButton.setBounds(650, 420, 100, 32);
+        UpdateButton.setBounds(330, 420, 100, 32);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel3.setText("Username:");
         add(jLabel3);
         jLabel3.setBounds(40, 70, 120, 16);
 
-        UsernameTextField.setEditable(false);
-        UsernameTextField.setBackground(new java.awt.Color(220, 220, 220));
         add(UsernameTextField);
-        UsernameTextField.setBounds(180, 70, 250, 25);
+        UsernameTextField.setBounds(180, 70, 250, 35);
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setText("Name:");
         add(jLabel4);
-        jLabel4.setBounds(40, 110, 120, 16);
+        jLabel4.setBounds(40, 115, 120, 16);
         add(NameTextField);
-        NameTextField.setBounds(180, 110, 250, 25);
+        NameTextField.setBounds(180, 115, 250, 35);
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel5.setText("Email:");
         add(jLabel5);
-        jLabel5.setBounds(40, 150, 120, 16);
+        jLabel5.setBounds(40, 160, 120, 16);
         add(EmailTextField);
-        EmailTextField.setBounds(180, 150, 250, 25);
+        EmailTextField.setBounds(180, 160, 250, 35);
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel6.setText("Phone:");
         add(jLabel6);
-        jLabel6.setBounds(40, 190, 120, 16);
+        jLabel6.setBounds(40, 205, 120, 16);
         add(PhoneTextField);
-        PhoneTextField.setBounds(180, 190, 250, 25);
+        PhoneTextField.setBounds(180, 205, 250, 35);
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel7.setText("Password:");
         add(jLabel7);
-        jLabel7.setBounds(40, 230, 120, 16);
+        jLabel7.setBounds(40, 250, 120, 16);
 
         PasswordTextField.setToolTipText("Leave blank to keep current password");
         add(PasswordTextField);
-        PasswordTextField.setBounds(180, 230, 250, 25);
+        PasswordTextField.setBounds(180, 250, 250, 35);
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel8.setText("Role:");
         add(jLabel8);
-        jLabel8.setBounds(40, 270, 120, 16);
+        jLabel8.setBounds(40, 295, 120, 16);
 
-        RoleTextField.setEditable(false);
-        RoleTextField.setBackground(new java.awt.Color(220, 220, 220));
-        add(RoleTextField);
-        RoleTextField.setBounds(180, 270, 250, 25);
+        RoleComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Faculty", "Student" }));
+        add(RoleComboBox);
+        RoleComboBox.setBounds(180, 295, 250, 35);
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel9.setText("Address:");
         add(jLabel9);
-        jLabel9.setBounds(40, 310, 120, 16);
+        jLabel9.setBounds(40, 340, 120, 16);
 
         AddressTextArea.setColumns(20);
         AddressTextArea.setRows(3);
         jScrollPane1.setViewportView(AddressTextArea);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(180, 310, 250, 70);
+        jScrollPane1.setBounds(180, 340, 250, 70);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
@@ -181,11 +183,18 @@ public class AdminUserAccount extends javax.swing.JPanel {
         // Update user account - Author: Akira Hanada
         
         // Validate inputs
+        String username = UsernameTextField.getText();
         String name = NameTextField.getText();
         String email = EmailTextField.getText();
         String phone = PhoneTextField.getText();
         String password = PasswordTextField.getText();
+        String role = (String) RoleComboBox.getSelectedItem();
         String address = AddressTextArea.getText();
+        
+        if (username == null || username.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Username is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
         if (name == null || name.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Name is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
@@ -203,7 +212,35 @@ public class AdminUserAccount extends javax.swing.JPanel {
             return;
         }
         
+        if (role == null || role.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Role is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Validate role value
+        String roleValue = role.trim();
+        if (!roleValue.equals("Admin") && !roleValue.equals("Faculty") && !roleValue.equals("Student")) {
+            JOptionPane.showMessageDialog(this, 
+                "Role must be one of: Admin, Faculty, Student", 
+                "Validation Error", 
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         try {
+            // Check if username is being changed and if it already exists
+            if (!username.trim().equals(selecteduseraccount.getUserLoginName())) {
+                UserAccount existingAccount = business.getUserAccountDirectory().findByUsername(username.trim());
+                if (existingAccount != null) {
+                    JOptionPane.showMessageDialog(this, 
+                        "Username '" + username.trim() + "' is already taken. Please choose a different username.", 
+                        "Validation Error", 
+                        JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                selecteduseraccount.setUserName(username.trim());
+            }
+            
             // Update person information
             Person person = selecteduseraccount.getAssociatedPersonProfile().getPerson();
             person.setName(name.trim());
@@ -220,9 +257,16 @@ public class AdminUserAccount extends javax.swing.JPanel {
                         JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                // Note: Password update would require adding a setter in UserAccount class
+                selecteduseraccount.setPassword(password.trim());
+            }
+            
+            // Note: Changing role would require creating a new profile type
+            // This is a more complex operation that might need additional implementation
+            if (!roleValue.equals(selecteduseraccount.getRole())) {
                 JOptionPane.showMessageDialog(this, 
-                    "Note: Password update feature requires additional implementation.\nOther details have been updated successfully.", 
+                    "Note: Role change from '" + selecteduseraccount.getRole() + "' to '" + roleValue + "' requires creating a new profile.\n" +
+                    "This advanced feature needs additional implementation.\n" +
+                    "Other details have been updated successfully.", 
                     "Partial Update", 
                     JOptionPane.INFORMATION_MESSAGE);
             }
@@ -231,6 +275,11 @@ public class AdminUserAccount extends javax.swing.JPanel {
                 "User account updated successfully!", 
                 "Success", 
                 JOptionPane.INFORMATION_MESSAGE);
+                
+            // Refresh parent table - Author: Akira Hanada
+            if (parentPanel != null) {
+                parentPanel.refreshTable();
+            }
                 
             // Navigate back
             CardSequencePanel.remove(this);
@@ -252,7 +301,7 @@ public class AdminUserAccount extends javax.swing.JPanel {
     private javax.swing.JTextField NameTextField;
     private javax.swing.JTextField PasswordTextField;
     private javax.swing.JTextField PhoneTextField;
-    private javax.swing.JTextField RoleTextField;
+    private javax.swing.JComboBox<String> RoleComboBox;
     private javax.swing.JButton UpdateButton;
     private javax.swing.JTextField UsernameTextField;
     private javax.swing.JLabel jLabel2;
