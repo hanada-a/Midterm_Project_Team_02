@@ -108,7 +108,7 @@ public class AdminUserAccount extends javax.swing.JPanel {
             }
         });
         add(UpdateButton);
-        UpdateButton.setBounds(650, 420, 100, 32);
+        UpdateButton.setBounds(330, 420, 100, 32);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel3.setText("Username:");

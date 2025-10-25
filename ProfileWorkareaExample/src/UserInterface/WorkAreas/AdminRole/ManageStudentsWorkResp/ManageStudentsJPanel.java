@@ -124,7 +124,7 @@ public class ManageStudentsJPanel extends javax.swing.JPanel {
             }
         });
         add(ViewButton);
-        ViewButton.setBounds(680, 260, 100, 32);
+        ViewButton.setBounds(560, 260, 100, 32);
 
         DeleteButton.setBackground(new java.awt.Color(255, 51, 51));
         DeleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -136,7 +136,7 @@ public class ManageStudentsJPanel extends javax.swing.JPanel {
             }
         });
         add(DeleteButton);
-        DeleteButton.setBounds(560, 260, 100, 32);
+        DeleteButton.setBounds(670, 260, 100, 32);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Student Records");

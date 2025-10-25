@@ -93,7 +93,7 @@ public class CreateUserAccountJPanel extends javax.swing.JPanel {
             }
         });
         add(CreateButton);
-        CreateButton.setBounds(650, 420, 100, 32);
+        CreateButton.setBounds(330, 420, 100, 32);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel3.setText("Username:");
