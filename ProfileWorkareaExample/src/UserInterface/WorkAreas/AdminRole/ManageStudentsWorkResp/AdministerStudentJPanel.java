@@ -97,38 +97,38 @@ public class AdministerStudentJPanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Email:");
         add(jLabel5);
-        jLabel5.setBounds(30, 130, 100, 20);
+        jLabel5.setBounds(30, 135, 100, 20);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Phone:");
         add(jLabel6);
-        jLabel6.setBounds(30, 160, 100, 20);
+        jLabel6.setBounds(30, 175, 100, 20);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Address:");
         add(jLabel7);
-        jLabel7.setBounds(30, 190, 100, 20);
+        jLabel7.setBounds(30, 215, 100, 20);
 
         PersonIDTextField.setEditable(false);
         PersonIDTextField.setBackground(new java.awt.Color(240, 240, 240));
         add(PersonIDTextField);
-        PersonIDTextField.setBounds(140, 70, 300, 25);
+        PersonIDTextField.setBounds(140, 70, 300, 35);
 
         add(NameTextField);
-        NameTextField.setBounds(140, 100, 300, 25);
+        NameTextField.setBounds(140, 100, 300, 35);
 
         add(EmailTextField);
-        EmailTextField.setBounds(140, 130, 300, 25);
+        EmailTextField.setBounds(140, 135, 300, 35);
 
         add(PhoneTextField);
-        PhoneTextField.setBounds(140, 160, 300, 25);
+        PhoneTextField.setBounds(140, 175, 300, 35);
 
         AddressTextArea.setColumns(20);
         AddressTextArea.setRows(3);
         jScrollPane1.setViewportView(AddressTextArea);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(140, 190, 300, 60);
+        jScrollPane1.setBounds(140, 215, 300, 60);
 
         SaveButton.setBackground(new java.awt.Color(51, 153, 255));
         SaveButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -140,7 +140,7 @@ public class AdministerStudentJPanel extends javax.swing.JPanel {
             }
         });
         add(SaveButton);
-        SaveButton.setBounds(370, 270, 70, 32);
+        SaveButton.setBounds(370, 290, 70, 32);
 
         Back.setText("<< Back");
         Back.addActionListener(new java.awt.event.ActionListener() {
@@ -149,7 +149,7 @@ public class AdministerStudentJPanel extends javax.swing.JPanel {
             }
         });
         add(Back);
-        Back.setBounds(30, 270, 76, 32);
+        Back.setBounds(30, 290, 76, 32);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed

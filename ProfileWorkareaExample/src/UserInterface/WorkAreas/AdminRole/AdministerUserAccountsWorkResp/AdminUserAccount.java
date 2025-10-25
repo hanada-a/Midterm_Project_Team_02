@@ -118,59 +118,59 @@ public class AdminUserAccount extends javax.swing.JPanel {
         UsernameTextField.setEditable(false);
         UsernameTextField.setBackground(new java.awt.Color(220, 220, 220));
         add(UsernameTextField);
-        UsernameTextField.setBounds(180, 70, 250, 25);
+        UsernameTextField.setBounds(180, 70, 250, 35);
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setText("Name:");
         add(jLabel4);
-        jLabel4.setBounds(40, 110, 120, 16);
+        jLabel4.setBounds(40, 115, 120, 16);
         add(NameTextField);
-        NameTextField.setBounds(180, 110, 250, 25);
+        NameTextField.setBounds(180, 115, 250, 35);
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel5.setText("Email:");
         add(jLabel5);
-        jLabel5.setBounds(40, 150, 120, 16);
+        jLabel5.setBounds(40, 160, 120, 16);
         add(EmailTextField);
-        EmailTextField.setBounds(180, 150, 250, 25);
+        EmailTextField.setBounds(180, 160, 250, 35);
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel6.setText("Phone:");
         add(jLabel6);
-        jLabel6.setBounds(40, 190, 120, 16);
+        jLabel6.setBounds(40, 205, 120, 16);
         add(PhoneTextField);
-        PhoneTextField.setBounds(180, 190, 250, 25);
+        PhoneTextField.setBounds(180, 205, 250, 35);
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel7.setText("Password:");
         add(jLabel7);
-        jLabel7.setBounds(40, 230, 120, 16);
+        jLabel7.setBounds(40, 250, 120, 16);
 
         PasswordTextField.setToolTipText("Leave blank to keep current password");
         add(PasswordTextField);
-        PasswordTextField.setBounds(180, 230, 250, 25);
+        PasswordTextField.setBounds(180, 250, 250, 35);
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel8.setText("Role:");
         add(jLabel8);
-        jLabel8.setBounds(40, 270, 120, 16);
+        jLabel8.setBounds(40, 295, 120, 16);
 
         RoleTextField.setEditable(false);
         RoleTextField.setBackground(new java.awt.Color(220, 220, 220));
         add(RoleTextField);
-        RoleTextField.setBounds(180, 270, 250, 25);
+        RoleTextField.setBounds(180, 295, 250, 35);
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel9.setText("Address:");
         add(jLabel9);
-        jLabel9.setBounds(40, 310, 120, 16);
+        jLabel9.setBounds(40, 340, 120, 16);
 
         AddressTextArea.setColumns(20);
         AddressTextArea.setRows(3);
         jScrollPane1.setViewportView(AddressTextArea);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(180, 310, 250, 70);
+        jScrollPane1.setBounds(180, 340, 250, 70);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
