@@ -185,7 +185,7 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
                 JOptionPane.WARNING_MESSAGE);
             return;
         }
-        AdminUserAccount mppd = new AdminUserAccount(selecteduseraccount, CardSequencePanel);
+        AdminUserAccount mppd = new AdminUserAccount(selecteduseraccount, CardSequencePanel, this);
         CardSequencePanel.add(mppd);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 

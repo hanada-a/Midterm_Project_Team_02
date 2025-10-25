@@ -23,11 +23,13 @@ public class AdminUserAccount extends javax.swing.JPanel {
      */
     JPanel CardSequencePanel;
     UserAccount selecteduseraccount;
+    ManageUserAccountsJPanel parentPanel;
 
-    public AdminUserAccount(UserAccount sua, JPanel jp) {
+    public AdminUserAccount(UserAccount sua, JPanel jp, ManageUserAccountsJPanel parent) {
 
         CardSequencePanel = jp;
         selecteduseraccount= sua;
+        this.parentPanel = parent;
         initComponents();
         populateFields();
 
@@ -231,6 +233,11 @@ public class AdminUserAccount extends javax.swing.JPanel {
                 "User account updated successfully!", 
                 "Success", 
                 JOptionPane.INFORMATION_MESSAGE);
+                
+            // Refresh parent table - Author: Akira Hanada
+            if (parentPanel != null) {
+                parentPanel.refreshTable();
+            }
                 
             // Navigate back
             CardSequencePanel.remove(this);
