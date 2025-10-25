@@ -50,7 +50,7 @@ public class AdminUserAccount extends javax.swing.JPanel {
             NameTextField.setText(person.getName());
             EmailTextField.setText(person.getEmail());
             PhoneTextField.setText(person.getPhone());
-            RoleTextField.setText(selecteduseraccount.getRole());
+            RoleComboBox.setSelectedItem(selecteduseraccount.getRole());
             AddressTextArea.setText(person.getAddress());
             // Don't populate password for security reasons
             PasswordTextField.setText("");
@@ -80,7 +80,7 @@ public class AdminUserAccount extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         PasswordTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        RoleTextField = new javax.swing.JTextField();
+        RoleComboBox = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         AddressTextArea = new javax.swing.JTextArea();
@@ -156,8 +156,9 @@ public class AdminUserAccount extends javax.swing.JPanel {
         add(jLabel8);
         jLabel8.setBounds(40, 295, 120, 16);
 
-        add(RoleTextField);
-        RoleTextField.setBounds(180, 295, 250, 35);
+        RoleComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Faculty", "Student" }));
+        add(RoleComboBox);
+        RoleComboBox.setBounds(180, 295, 250, 35);
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel9.setText("Address:");
@@ -187,7 +188,7 @@ public class AdminUserAccount extends javax.swing.JPanel {
         String email = EmailTextField.getText();
         String phone = PhoneTextField.getText();
         String password = PasswordTextField.getText();
-        String role = RoleTextField.getText();
+        String role = (String) RoleComboBox.getSelectedItem();
         String address = AddressTextArea.getText();
         
         if (username == null || username.trim().isEmpty()) {
@@ -300,7 +301,7 @@ public class AdminUserAccount extends javax.swing.JPanel {
     private javax.swing.JTextField NameTextField;
     private javax.swing.JTextField PasswordTextField;
     private javax.swing.JTextField PhoneTextField;
-    private javax.swing.JTextField RoleTextField;
+    private javax.swing.JComboBox<String> RoleComboBox;
     private javax.swing.JButton UpdateButton;
     private javax.swing.JTextField UsernameTextField;
     private javax.swing.JLabel jLabel2;
