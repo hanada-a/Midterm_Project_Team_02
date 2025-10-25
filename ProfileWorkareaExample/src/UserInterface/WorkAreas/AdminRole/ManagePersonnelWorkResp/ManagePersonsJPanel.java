@@ -40,7 +40,7 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
      * Refresh the table with all persons
      * @author Akira Hanada
      */
-    private void refreshTable() {
+    public void refreshTable() {
         // Clear table
         int rc = PersonTable.getRowCount();
         for (int i = rc - 1; i >= 0; i--) {
@@ -152,7 +152,7 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
             return;
         }
         
-        AdministerPersonJPanel mppd = new AdministerPersonJPanel(business, CardSequencePanel, selectedPerson);
+        AdministerPersonJPanel mppd = new AdministerPersonJPanel(business, CardSequencePanel, selectedPerson, this);
         CardSequencePanel.add(mppd);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 
