@@ -22,11 +22,13 @@ public class AdministerFacultyJPanel extends javax.swing.JPanel {
     JPanel CardSequencePanel;
     Business business;
     FacultyProfile selectedFaculty;
+    ManageFacultyJPanel parentPanel;
 
-    public AdministerFacultyJPanel(Business bz, JPanel jp, FacultyProfile faculty) {
+    public AdministerFacultyJPanel(Business bz, JPanel jp, FacultyProfile faculty, ManageFacultyJPanel parent) {
         CardSequencePanel = jp;
         this.business = bz;
         this.selectedFaculty = faculty;
+        this.parentPanel = parent;
         initComponents();
         
         if (selectedFaculty != null) {
@@ -232,6 +234,11 @@ public class AdministerFacultyJPanel extends javax.swing.JPanel {
                     "Faculty profile updated successfully!", 
                     "Success", 
                     JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+            // Refresh parent table - Author: Akira Hanada
+            if (parentPanel != null) {
+                parentPanel.refreshTable();
             }
             
             // Navigate back

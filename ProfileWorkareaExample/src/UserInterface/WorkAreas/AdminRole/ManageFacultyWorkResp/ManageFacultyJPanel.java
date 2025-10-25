@@ -190,7 +190,7 @@ public class ManageFacultyJPanel extends javax.swing.JPanel {
             return;
         }
         
-        AdministerFacultyJPanel afp = new AdministerFacultyJPanel(business, CardSequencePanel, selectedFaculty);
+        AdministerFacultyJPanel afp = new AdministerFacultyJPanel(business, CardSequencePanel, selectedFaculty, this);
         CardSequencePanel.add("Administer Faculty", afp);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
     }//GEN-LAST:event_ViewEditButtonActionPerformed

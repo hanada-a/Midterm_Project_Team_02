@@ -36,7 +36,7 @@ public class ManageStudentsJPanel extends javax.swing.JPanel {
      * Refresh the table with all students
      * @author Akira Hanada
      */
-    private void refreshTable() {
+    public void refreshTable() {
         // Clear table
         int rc = StudentTable.getRowCount();
         for (int i = rc - 1; i >= 0; i--) {
@@ -165,7 +165,7 @@ public class ManageStudentsJPanel extends javax.swing.JPanel {
             return;
         }
         
-        AdministerStudentJPanel asp = new AdministerStudentJPanel(business, CardSequencePanel, selectedStudent);
+        AdministerStudentJPanel asp = new AdministerStudentJPanel(business, CardSequencePanel, selectedStudent, this);
         CardSequencePanel.add("AdministerStudent", asp);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
     }//GEN-LAST:event_ViewButtonActionPerformed
