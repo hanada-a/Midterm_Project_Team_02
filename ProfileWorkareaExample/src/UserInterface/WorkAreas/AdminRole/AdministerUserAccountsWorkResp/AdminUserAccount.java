@@ -6,6 +6,7 @@
  */
 package UserInterface.WorkAreas.AdminRole.AdministerUserAccountsWorkResp;
 
+import Business.Business;
 import Business.Person.Person;
 import Business.UserAccounts.UserAccount;
 import javax.swing.JPanel;
@@ -24,12 +25,14 @@ public class AdminUserAccount extends javax.swing.JPanel {
     JPanel CardSequencePanel;
     UserAccount selecteduseraccount;
     ManageUserAccountsJPanel parentPanel;
+    Business business;
 
     public AdminUserAccount(UserAccount sua, JPanel jp, ManageUserAccountsJPanel parent) {
 
         CardSequencePanel = jp;
         selecteduseraccount= sua;
         this.parentPanel = parent;
+        this.business = parent.business;
         initComponents();
         populateFields();
 
@@ -115,8 +118,6 @@ public class AdminUserAccount extends javax.swing.JPanel {
         add(jLabel3);
         jLabel3.setBounds(40, 70, 120, 16);
 
-        UsernameTextField.setEditable(false);
-        UsernameTextField.setBackground(new java.awt.Color(220, 220, 220));
         add(UsernameTextField);
         UsernameTextField.setBounds(180, 70, 250, 35);
 
@@ -155,8 +156,6 @@ public class AdminUserAccount extends javax.swing.JPanel {
         add(jLabel8);
         jLabel8.setBounds(40, 295, 120, 16);
 
-        RoleTextField.setEditable(false);
-        RoleTextField.setBackground(new java.awt.Color(220, 220, 220));
         add(RoleTextField);
         RoleTextField.setBounds(180, 295, 250, 35);
 
@@ -183,11 +182,18 @@ public class AdminUserAccount extends javax.swing.JPanel {
         // Update user account - Author: Akira Hanada
         
         // Validate inputs
+        String username = UsernameTextField.getText();
         String name = NameTextField.getText();
         String email = EmailTextField.getText();
         String phone = PhoneTextField.getText();
         String password = PasswordTextField.getText();
+        String role = RoleTextField.getText();
         String address = AddressTextArea.getText();
+        
+        if (username == null || username.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Username is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
         if (name == null || name.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Name is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
@@ -205,7 +211,35 @@ public class AdminUserAccount extends javax.swing.JPanel {
             return;
         }
         
+        if (role == null || role.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Role is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Validate role value
+        String roleValue = role.trim();
+        if (!roleValue.equals("Admin") && !roleValue.equals("Faculty") && !roleValue.equals("Student")) {
+            JOptionPane.showMessageDialog(this, 
+                "Role must be one of: Admin, Faculty, Student", 
+                "Validation Error", 
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         try {
+            // Check if username is being changed and if it already exists
+            if (!username.trim().equals(selecteduseraccount.getUserLoginName())) {
+                UserAccount existingAccount = business.getUserAccountDirectory().findByUsername(username.trim());
+                if (existingAccount != null) {
+                    JOptionPane.showMessageDialog(this, 
+                        "Username '" + username.trim() + "' is already taken. Please choose a different username.", 
+                        "Validation Error", 
+                        JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                selecteduseraccount.setUserName(username.trim());
+            }
+            
             // Update person information
             Person person = selecteduseraccount.getAssociatedPersonProfile().getPerson();
             person.setName(name.trim());
@@ -222,9 +256,16 @@ public class AdminUserAccount extends javax.swing.JPanel {
                         JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                // Note: Password update would require adding a setter in UserAccount class
+                selecteduseraccount.setPassword(password.trim());
+            }
+            
+            // Note: Changing role would require creating a new profile type
+            // This is a more complex operation that might need additional implementation
+            if (!roleValue.equals(selecteduseraccount.getRole())) {
                 JOptionPane.showMessageDialog(this, 
-                    "Note: Password update feature requires additional implementation.\nOther details have been updated successfully.", 
+                    "Note: Role change from '" + selecteduseraccount.getRole() + "' to '" + roleValue + "' requires creating a new profile.\n" +
+                    "This advanced feature needs additional implementation.\n" +
+                    "Other details have been updated successfully.", 
                     "Partial Update", 
                     JOptionPane.INFORMATION_MESSAGE);
             }
