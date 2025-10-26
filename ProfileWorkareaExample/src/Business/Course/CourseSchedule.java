@@ -49,11 +49,11 @@ public class CourseSchedule {
         this.semester = semester;
     }
 
-    public ArrayList<CourseOffer> getCourseofferlist() {
+    public ArrayList<CourseOffer> getCourseOfferlist() {
         return courseofferlist;
     }
 
-    public void setCourseofferlist(ArrayList<CourseOffer> courseofferlist) {
+    public void setCourseOfferlist(ArrayList<CourseOffer> courseofferlist) {
         this.courseofferlist = courseofferlist;
     }
     
