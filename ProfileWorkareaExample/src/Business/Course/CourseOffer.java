@@ -16,12 +16,14 @@ public class CourseOffer {
     String semester;
     ArrayList<Seat> seatlist;
     FacultyAssignment facultyassignment;
+    ArrayList<Assignment> assignmentlist;
     
     public CourseOffer(Course course, String semester) {
         this.course = course;
         this.semester = semester;
         this.seatlist = new ArrayList<>();
         this.facultyassignment = facultyassignment;
+        this.assignmentlist = new ArrayList<>(); 
     }
 
     public Seat newSeat() {
@@ -35,13 +37,18 @@ public class CourseOffer {
     }
     
     
-    ///////////////////////////////////////
-    // TODO: need getEnrolledCount() too //
-    ///////////////////////////////////////
-    
-    
     public boolean isMatch(String courseNumber, String semester) {
         return course.isMatch(courseNumber) && this.semester.equals(semester);
+    }
+    
+    public Assignment newAssignment(String name) {
+        Assignment a = new Assignment(name);
+        assignmentlist.add(a);
+        return a;
+    }
+    
+    public ArrayList<Assignment> getAssignmentList() {
+        return assignmentlist;
     }
     
     public Course getCourse() {

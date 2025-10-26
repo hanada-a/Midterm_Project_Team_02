@@ -6,6 +6,7 @@
 */
 package Business;
 
+import Business.Course.Assignment;
 import Business.Course.Course;
 import Business.Course.CourseCatalog;
 import Business.Course.CourseOffer;
@@ -148,7 +149,7 @@ public class ConfigureABusiness {
         Seat seat3 = offer2.newSeat();
         
         
-        // demo student hobbies, interests, and grades
+        // demo student hobbies, interests, assignments and grades
         studentprofile0.setHobbies("Reading, Hiking, Hockey");
         studentprofile0.setInterests("Artificial Intelligence, Machine Learning");
 
@@ -166,6 +167,10 @@ public class ConfigureABusiness {
         SeatAssignment sa2 = new SeatAssignment(studentprofile1, seat2);
         seat2.setSeatAssignment(sa2);
         sa2.setGrade(85f);
+        
+        Assignment hw1 = offer1.newAssignment("Homework 1");
+        Assignment hw2 = offer1.newAssignment("Homework 2");
+        Assignment hw3 = offer2.newAssignment("Homework 1");
         
         
         
