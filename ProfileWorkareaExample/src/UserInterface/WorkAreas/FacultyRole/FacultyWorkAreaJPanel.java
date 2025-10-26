@@ -13,6 +13,7 @@ package UserInterface.WorkAreas.FacultyRole;
 import Business.Business;
 import Business.Profiles.FacultyProfile;
 import UserInterface.WorkAreas.AdminRole.ManagePersonnelWorkResp.ManagePersonsJPanel;
+import UserInterface.WorkAreas.FacultyRole.ManageCoursesWorkResp.ManageCoursesJPanel;
 import javax.swing.JPanel;
 
 /**
@@ -154,9 +155,9 @@ public class FacultyWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         CardSequencePanel.removeAll();
 
-        ManagePersonsJPanel aos = new ManagePersonsJPanel(business, CardSequencePanel);
+        ManageCoursesJPanel mcp = new ManageCoursesJPanel(business, faculty, CardSequencePanel);
 
-        CardSequencePanel.add("Manage Persons", aos);
+        CardSequencePanel.add("Manage Courses", mcp);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 
     }//GEN-LAST:event_btnManageCoursesIdentifyResourceAssetsActionPerformed
