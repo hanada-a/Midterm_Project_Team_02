@@ -45,8 +45,9 @@ public class ManageCoursesJPanel extends javax.swing.JPanel {
         
         // find courses assigned to this faculty member
         for (CourseOffer co : business.getCourseSchedule().getCourseOfferlist()) {
-            if (co.getFacultyassignment() != null && co.getFacultyassignment().getFaculty().equals(faculty)) {
-            
+            if (co.getFacultyassignment() != null && 
+            co.getFacultyassignment().getFaculty().getPerson().getPersonId().equals(faculty.getPerson().getPersonId())) {  
+              
                 Object[] row = new Object[5];
                 row[0] = co;
                 row[1] = co.getCourse().getCourseId();
@@ -86,7 +87,7 @@ public class ManageCoursesJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Course Offer", "Course ID", "Course Name", "Semester", "Seats"
+                "Course Offer", "Course ID", "Course Name", "Semester", "Enrolled"
             }
         ));
         jScrollPane1.setViewportView(tblCourses);

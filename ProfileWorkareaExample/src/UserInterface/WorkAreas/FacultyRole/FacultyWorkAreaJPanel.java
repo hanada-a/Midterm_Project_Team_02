@@ -14,6 +14,7 @@ import Business.Business;
 import Business.Profiles.FacultyProfile;
 import UserInterface.WorkAreas.AdminRole.ManagePersonnelWorkResp.ManagePersonsJPanel;
 import UserInterface.WorkAreas.FacultyRole.ManageCoursesWorkResp.ManageCoursesJPanel;
+import UserInterface.WorkAreas.FacultyRole.ManageCoursesWorkResp.PerformanceReportsJPanel;
 import UserInterface.WorkAreas.FacultyRole.ManageStudentsWorkResp.ViewStudentProfilesJPanel;
 import javax.swing.JPanel;
 
@@ -181,6 +182,10 @@ public class FacultyWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportsActionPerformed
         // TODO add your handling code here:
+        
+        PerformanceReportsJPanel panel = new PerformanceReportsJPanel(business, faculty, CardSequencePanel);
+        CardSequencePanel.add("Performance Reports", panel);
+        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 
 }//GEN-LAST:event_btnReportsActionPerformed
 
