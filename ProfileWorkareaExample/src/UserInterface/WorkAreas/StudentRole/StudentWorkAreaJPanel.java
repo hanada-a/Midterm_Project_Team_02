@@ -1,13 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
- /*
- * WorkAreaJPanel.java
- *
- * Created on May 17, 2020, 8:35:29 AM
- */
 package UserInterface.WorkAreas.StudentRole;
 
 import Business.Business;
@@ -15,10 +6,7 @@ import Business.Profiles.StudentProfile;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
-/**
- *
- * @author kal
- */
+
 public class StudentWorkAreaJPanel extends javax.swing.JPanel {
 
     javax.swing.JPanel CardSequencePanel;
