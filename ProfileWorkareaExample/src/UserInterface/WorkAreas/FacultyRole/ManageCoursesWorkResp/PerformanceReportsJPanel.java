@@ -7,8 +7,11 @@ package UserInterface.WorkAreas.FacultyRole.ManageCoursesWorkResp;
 import Business.Business;
 import Business.Course.CourseOffer;
 import Business.Course.Seat;
+import Business.Course.SeatAssignment;
 import Business.Profiles.FacultyProfile;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,6 +24,7 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
     JPanel CardSequencePanel;
     Business business;
     FacultyProfile faculty;
+    ArrayList<SeatAssignment> seatAssignments;
     
     /**
      * Creates new form PerformanceReportsJPanel
@@ -31,7 +35,10 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
         this.CardSequencePanel = p;
         this.business = b;
         this.faculty = fp;
+        this.seatAssignments = new ArrayList<>();
         
+        tblGrades.setEnabled(false);
+        btnSave.setEnabled(false);
         loadGrades();
         
     }
@@ -40,6 +47,7 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
     private void loadGrades() {
         DefaultTableModel model = (DefaultTableModel) tblGrades.getModel();
         model.setRowCount(0);
+        seatAssignments.clear();
 
         // show only grades for this faculty member's courses
         for (CourseOffer co : business.getCourseSchedule().getCourseOfferlist()) {
@@ -48,13 +56,17 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
             
                 for (Seat seat : co.getSeatlist()) {
                     if (seat.getSeatAssignment() != null) {
+                        
+                        SeatAssignment sa = seat.getSeatAssignment();
+                        seatAssignments.add(sa);
+                        
                         Object[] row = new Object[6];
-                        row[0] = seat.getSeatAssignment().getStudent().getPerson().getName();
-                        row[1] = seat.getSeatAssignment().getStudent().getPerson().getPersonId();
+                        row[0] = sa.getStudent().getPerson().getName();
+                        row[1] = sa.getStudent().getPerson().getPersonId();
                         row[2] = co.getCourse().getCourseId();
                         row[3] = co.getCourse().getCourseName();
                         row[4] = co.getSemester();
-                        row[5] = seat.getSeatAssignment().getGrade();
+                        row[5] = sa.getGrade();
                         model.addRow(row);
                     }
                 }
@@ -76,6 +88,8 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
         tblGrades = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
 
         tblGrades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -87,7 +101,15 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
             new String [] {
                 "Student Name", "Person ID", "Course ID", "Course Name", "Semester", "Grade"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblGrades);
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -100,14 +122,33 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnUpdate.setText("Edit Grade Column");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
+        btnSave.setText("Save Grade Column");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBack)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUpdate)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSave))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -123,7 +164,11 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBack)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSave)
+                        .addComponent(btnUpdate))
+                    .addComponent(btnBack))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -137,9 +182,47 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        
+        tblGrades.setEnabled(true);
+        btnSave.setEnabled(true);
+        btnUpdate.setEnabled(false);
+        
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        
+        // ensure grade is valid type and value
+        try {
+            DefaultTableModel model = (DefaultTableModel) tblGrades.getModel();
+            
+            for (int i = 0; i < model.getRowCount(); i++) {
+                float newGrade = Float.parseFloat(model.getValueAt(i, 5).toString());
+                if (newGrade < 0 || newGrade > 100) {
+                    JOptionPane.showMessageDialog(this, "Grades must be 0-100", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                seatAssignments.get(i).setGrade(newGrade);
+            }
+            
+            tblGrades.setEnabled(false);
+            btnSave.setEnabled(false);
+            btnUpdate.setEnabled(true);
+            JOptionPane.showMessageDialog(this, "Grades saved", "Info", JOptionPane.INFORMATION_MESSAGE);
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Grades must be numeric", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnSaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblGrades;

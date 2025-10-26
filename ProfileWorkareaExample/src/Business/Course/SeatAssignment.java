@@ -5,6 +5,7 @@
 package Business.Course;
 
 import Business.Profiles.StudentProfile;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,16 +17,28 @@ public class SeatAssignment {
     Seat seat;
     float grade;
     Boolean courseComplete;
-    /* for Travis if needed: */
-    // ArrayList<Assignment> assignmentlist;
+    ArrayList<Assignment> assignmentlist;
     
     public SeatAssignment(StudentProfile student, Seat seat) {
         this.student = student;
         this.seat = seat;
         this.grade = 0;
         this.courseComplete = false;
-        // this.assignmentlist = new ArrayList<>();
+        this.assignmentlist = new ArrayList<>();
     }
+    
+    
+    public Assignment newAssignment(String name) {
+        Assignment a = new Assignment(name);
+        assignmentlist.add(a);
+        return a;
+    }
+    
+    public ArrayList<Assignment> getAssignmentList() {
+        return assignmentlist;
+    }
+    
+    
 
     public StudentProfile getStudent() {
         return student;
