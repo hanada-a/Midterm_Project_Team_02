@@ -4,17 +4,29 @@
  */
 package UserInterface.WorkAreas.StudentRole;
 
+import Business.Business;
+import Business.Profiles.StudentProfile;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author hodor
  */
-public class StudendCourseWorkJPanel extends javax.swing.JPanel {
-
+public class StudentCourseWorkJPanel extends javax.swing.JPanel {
+    
+    JPanel CardSequencePanel;
+    Business business;
+    StudentProfile student;
+    
     /**
      * Creates new form StudendCourseWorkJPanel
      */
-    public StudendCourseWorkJPanel() {
+    public StudentCourseWorkJPanel(JPanel panel, Business b, StudentProfile s) {
         initComponents();
+        CardSequencePanel = panel;
+        business = b;
+        student = s;
     }
 
     /**
@@ -27,29 +39,52 @@ public class StudendCourseWorkJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblTitle = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
         lblTitle.setText("Course Work");
+
+        btnBack.setText("<<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(417, 417, 417)
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addGap(323, 323, 323)
                 .addComponent(lblTitle)
                 .addContainerGap(608, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(lblTitle)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(lblTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack)))
                 .addContainerGap(426, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        CardSequencePanel.remove(this);
+        CardLayout layout = (CardLayout) CardSequencePanel.getLayout();
+        layout.previous(CardSequencePanel);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }
