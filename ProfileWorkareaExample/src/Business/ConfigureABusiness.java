@@ -142,7 +142,27 @@ public class ConfigureABusiness {
         Seat seat2 = offer1.newSeat();
         Seat seat3 = offer2.newSeat();
         
+        
+        // demo student hobbies, interests, and grades
+        studentprofile0.setHobbies("Reading, Hiking, Hockey");
+        studentprofile0.setInterests("Artificial Intelligence, Machine Learning");
 
+        studentprofile1.setHobbies("Partying");
+        studentprofile1.setInterests("Communications");
+        
+        SeatAssignment sa1 = new SeatAssignment(studentprofile0, seat1);
+        seat1.setSeatAssignment(sa1);
+        sa1.setGrade(97.5f);
+
+        SeatAssignment sa3 = new SeatAssignment(studentprofile0, seat3);
+        seat3.setSeatAssignment(sa3);
+        sa3.setGrade(95f);
+        
+        SeatAssignment sa2 = new SeatAssignment(studentprofile1, seat2);
+        seat2.setSeatAssignment(sa2);
+        sa2.setGrade(85f);
+        
+        
         
         return business;
 

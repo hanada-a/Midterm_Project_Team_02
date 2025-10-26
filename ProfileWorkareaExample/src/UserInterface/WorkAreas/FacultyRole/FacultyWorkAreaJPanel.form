@@ -28,7 +28,7 @@
                       <Group type="102" attributes="0">
                           <Component id="btnManageCourses" min="-2" pref="164" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                          <Component id="btnManageStudents" min="-2" pref="164" max="-2" attributes="0"/>
+                          <Component id="btnViewStudents" min="-2" pref="164" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="btnProfile" min="-2" pref="164" max="-2" attributes="0"/>
@@ -50,7 +50,7 @@
               <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnManageCourses" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="btnManageStudents" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="btnViewStudents" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -94,7 +94,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageCoursesIdentifyResourceAssetsActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnManageStudents">
+    <Component class="javax.swing.JButton" name="btnViewStudents">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="99" red="66" type="rgb"/>
@@ -105,7 +105,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Manage Students Profiles"/>
+        <Property name="text" type="java.lang.String" value="View All Student Profiles"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
             <BevelBorder/>
@@ -122,7 +122,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageStudentsActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewStudentsActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnProfile">
