@@ -13,11 +13,16 @@ import Business.Person.Person;
  */
 public class StudentProfile extends Profile {
 
+    String hobbies;
+    String interests;
+    
 //    Transcript transcript;
     //   EmploymentHistroy employmenthistory;
 
     public StudentProfile(Person p) {
         super(p);
+        this.hobbies = "";
+        this.interests = "";
 
 //        transcript = new Transcript(this);
 //        employmenthistory = new EmploymentHistroy();
@@ -26,6 +31,22 @@ public class StudentProfile extends Profile {
     @Override
     public String getRole() {
         return "Student";
+    }
+
+    public String getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(String hobbies) {
+        this.hobbies = hobbies;
+    }
+
+    public String getInterests() {
+        return interests;
+    }
+
+    public void setInterests(String interests) {
+        this.interests = interests;
     }
 
     public boolean isMatch(String id) {
