@@ -39,6 +39,14 @@ public class SeatAssignment {
     }
     
     
+    // so students get their own copies of assignments
+    public void initializeAssignments() {
+        CourseOffer courseOffer = seat.getCourseOffer();
+        for (Assignment courseAssignment : courseOffer.getAssignmentList()) {
+            Assignment studentAssignment = new Assignment(courseAssignment.getAssignmentName());
+            assignmentlist.add(studentAssignment);
+        }
+    }
 
     public StudentProfile getStudent() {
         return student;

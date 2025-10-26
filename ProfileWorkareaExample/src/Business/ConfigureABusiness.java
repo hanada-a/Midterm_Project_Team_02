@@ -156,21 +156,36 @@ public class ConfigureABusiness {
         studentprofile1.setHobbies("Partying");
         studentprofile1.setInterests("Communications");
         
+        Assignment hw1 = offer1.newAssignment("Homework 1");
+        Assignment hw2 = offer1.newAssignment("Homework 2");
+        Assignment hw3 = offer2.newAssignment("Homework 1a");
+        
         SeatAssignment sa1 = new SeatAssignment(studentprofile0, seat1);
         seat1.setSeatAssignment(sa1);
-        sa1.setGrade(97.5f);
+        sa1.initializeAssignments();
+        sa1.getAssignmentList().get(0).setAssignmentGrade(90f);
+        sa1.getAssignmentList().get(0).setSubmitted(true);
+        sa1.getAssignmentList().get(1).setAssignmentGrade(100f);
+        sa1.getAssignmentList().get(1).setSubmitted(true);
+        sa1.setGrade(95f);
 
         SeatAssignment sa3 = new SeatAssignment(studentprofile0, seat3);
         seat3.setSeatAssignment(sa3);
+        sa3.initializeAssignments();
+        sa3.getAssignmentList().get(0).setAssignmentGrade(95f);
+        sa3.getAssignmentList().get(0).setSubmitted(true);
         sa3.setGrade(95f);
         
         SeatAssignment sa2 = new SeatAssignment(studentprofile1, seat2);
         seat2.setSeatAssignment(sa2);
+        sa2.initializeAssignments();
+        sa2.getAssignmentList().get(0).setAssignmentGrade(80f);
+        sa2.getAssignmentList().get(0).setSubmitted(true);
+        sa2.getAssignmentList().get(1).setAssignmentGrade(90f);
+        sa2.getAssignmentList().get(1).setSubmitted(true);
         sa2.setGrade(85f);
         
-        Assignment hw1 = offer1.newAssignment("Homework 1");
-        Assignment hw2 = offer1.newAssignment("Homework 2");
-        Assignment hw3 = offer2.newAssignment("Homework 1");
+        
         
         
         

@@ -72,6 +72,10 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
         }
     }
     
+    
+    public void refresh() {
+        loadGrades();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -179,7 +183,7 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
     
         SeatAssignment sa = seatAssignments.get(row);
     
-        ManageGradesJPanel panel = new ManageGradesJPanel(CardSequencePanel, sa);
+        ManageGradesJPanel panel = new ManageGradesJPanel(CardSequencePanel, sa, this);
         CardSequencePanel.add("Manage Grades", panel);
         CardLayout layout = (CardLayout) CardSequencePanel.getLayout();
         layout.next(CardSequencePanel);
