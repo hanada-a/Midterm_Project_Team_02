@@ -37,8 +37,6 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
         this.faculty = fp;
         this.seatAssignments = new ArrayList<>();
         
-        tblGrades.setEnabled(false);
-        btnSave.setEnabled(false);
         loadGrades();
         
     }
@@ -89,7 +87,6 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
 
         tblGrades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -103,7 +100,7 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -122,17 +119,10 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnUpdate.setText("Edit Grade Column");
+        btnUpdate.setText("Update Grades");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
-            }
-        });
-
-        btnSave.setText("Save Grade Column");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
             }
         });
 
@@ -146,11 +136,9 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnUpdate)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSave))
+                        .addComponent(btnUpdate))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -164,11 +152,9 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnSave)
-                        .addComponent(btnUpdate))
-                    .addComponent(btnBack))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
+                    .addComponent(btnUpdate))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -185,43 +171,24 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         
-        tblGrades.setEnabled(true);
-        btnSave.setEnabled(true);
-        btnUpdate.setEnabled(false);
+        int row = tblGrades.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "Select a row", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+    
+        SeatAssignment sa = seatAssignments.get(row);
+    
+        ManageGradesJPanel panel = new ManageGradesJPanel(CardSequencePanel, sa);
+        CardSequencePanel.add("Manage Grades", panel);
+        CardLayout layout = (CardLayout) CardSequencePanel.getLayout();
+        layout.next(CardSequencePanel);
         
     }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-        
-        // ensure grade is valid type and value
-        try {
-            DefaultTableModel model = (DefaultTableModel) tblGrades.getModel();
-            
-            for (int i = 0; i < model.getRowCount(); i++) {
-                float newGrade = Float.parseFloat(model.getValueAt(i, 5).toString());
-                if (newGrade < 0 || newGrade > 100) {
-                    JOptionPane.showMessageDialog(this, "Grades must be 0-100", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-                seatAssignments.get(i).setGrade(newGrade);
-            }
-            
-            tblGrades.setEnabled(false);
-            btnSave.setEnabled(false);
-            btnUpdate.setEnabled(true);
-            JOptionPane.showMessageDialog(this, "Grades saved", "Info", JOptionPane.INFORMATION_MESSAGE);
-            
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Grades must be numeric", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        
-    }//GEN-LAST:event_btnSaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

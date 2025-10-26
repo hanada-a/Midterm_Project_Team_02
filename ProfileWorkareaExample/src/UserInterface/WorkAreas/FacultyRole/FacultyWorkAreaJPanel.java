@@ -103,7 +103,7 @@ public class FacultyWorkAreaJPanel extends javax.swing.JPanel {
         btnReports.setBackground(new java.awt.Color(102, 153, 255));
         btnReports.setFont(getFont());
         btnReports.setForeground(new java.awt.Color(255, 255, 255));
-        btnReports.setText("Performance Reports");
+        btnReports.setText("Manage Grades");
         btnReports.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnReports.setMaximumSize(new java.awt.Dimension(200, 40));
         btnReports.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -134,7 +134,7 @@ public class FacultyWorkAreaJPanel extends javax.swing.JPanel {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnReports, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(632, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
