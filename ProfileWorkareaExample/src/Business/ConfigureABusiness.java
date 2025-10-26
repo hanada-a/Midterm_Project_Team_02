@@ -138,6 +138,11 @@ public class ConfigureABusiness {
         FacultyAssignment fa3 = new FacultyAssignment(facultyprofile1, offer3);
         FacultyAssignment fa4 = new FacultyAssignment(facultyprofile2, offer4);
         
+        offer1.setFacultyassignment(fa1);
+        offer2.setFacultyassignment(fa2);
+        offer3.setFacultyassignment(fa3);
+        offer4.setFacultyassignment(fa4);
+        
         Seat seat1 = offer1.newSeat();
         Seat seat2 = offer1.newSeat();
         Seat seat3 = offer2.newSeat();
