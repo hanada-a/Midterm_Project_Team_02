@@ -19,15 +19,18 @@ public class ManageGradesJPanel extends javax.swing.JPanel {
 
     JPanel CardSequencePanel;
     SeatAssignment seatAssignment;
+    PerformanceReportsJPanel parentPanel;
+
     
     /**
      * Creates new form ManageGradesJPanel
      */
-    public ManageGradesJPanel(JPanel p, SeatAssignment sa) {
+    public ManageGradesJPanel(JPanel p, SeatAssignment sa, PerformanceReportsJPanel parent) {
         initComponents();
         
         this.CardSequencePanel = p;
         this.seatAssignment = sa;
+        this.parentPanel = parent;
         
         txtStudentName.setText(sa.getStudent().getPerson().getName());
         txtId.setText(sa.getStudent().getPerson().getPersonId());
@@ -236,37 +239,55 @@ public class ManageGradesJPanel extends javax.swing.JPanel {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         
-        try {
-            DefaultTableModel model = (DefaultTableModel) tblAssignments.getModel();
-            for (int i = 0; i < model.getRowCount(); i++) {
-                float newGrade = Float.parseFloat(model.getValueAt(i, 1).toString());
-                boolean submitted = (Boolean) model.getValueAt(i, 2);
+        DefaultTableModel model = (DefaultTableModel) tblAssignments.getModel();
+    
+        // validate all assignment grades
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String gradeText = model.getValueAt(i, 2).toString().trim();
             
-                seatAssignment.getAssignmentList().get(i).setAssignmentGrade(newGrade);
-                seatAssignment.getAssignmentList().get(i).setSubmitted(submitted);
-            }
-        
-            float overallGrade = Float.parseFloat(txtGrade.getText());
-            if (overallGrade < 0 || overallGrade > 100) {
-                JOptionPane.showMessageDialog(this, "Grade must be 0-100");
+            // i didn't want to use regex but every other method i tried wouldn't validate this properly :(
+            if (!gradeText.matches("\\d+(\\.\\d+)?")) {
+                JOptionPane.showMessageDialog(this, 
+                    "Grade must be numeric","Error",JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            seatAssignment.setGrade(overallGrade);
-        
-            tblAssignments.setEnabled(false);
-            txtGrade.setEditable(false);
-            btnSave.setEnabled(false);
-            btnUpdate.setEnabled(true);
-            JOptionPane.showMessageDialog(this, "Grades saved");
-        
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Grades must be numeric");
         }
+    
+        // validate overall grade
+        try {
+            Float.parseFloat(txtGrade.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"Invalid overall grade","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    
+        // save all grades
+        for (int i = 0; i < model.getRowCount(); i++) {
+            float grade = Float.parseFloat(model.getValueAt(i, 2).toString());
+            Object submittedValue = model.getValueAt(i, 1);
+            boolean submitted = (submittedValue instanceof Boolean) ? (Boolean) submittedValue : true;
+        
+            seatAssignment.getAssignmentList().get(i).setAssignmentGrade(grade);
+            seatAssignment.getAssignmentList().get(i).setSubmitted(submitted);
+        }
+        seatAssignment.setGrade(Float.parseFloat(txtGrade.getText()));
+    
+        tblAssignments.setEnabled(false);
+        txtGrade.setEditable(false);
+        btnSave.setEnabled(false);
+        btnUpdate.setEnabled(true);
+        JOptionPane.showMessageDialog(this, "Grades saved successfully");
+    
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        
+        // update parent table first
+        if (parentPanel != null) {
+            parentPanel.refresh();
+        }
         
         CardSequencePanel.remove(this);
         CardLayout layout = (CardLayout) CardSequencePanel.getLayout();
