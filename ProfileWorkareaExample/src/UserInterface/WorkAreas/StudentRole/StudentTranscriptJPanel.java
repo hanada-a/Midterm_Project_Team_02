@@ -5,9 +5,12 @@
 package UserInterface.WorkAreas.StudentRole;
 
 import Business.Business;
+import Business.Course.SeatAssignment;
+import Business.Course.Transcript;
 import Business.Profiles.StudentProfile;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +21,7 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
     JPanel CardSequencePanel;
     Business business;
     StudentProfile student;
+    Transcript transcript;
     
     /**
      * Creates new form StudentManageProfileJPanel
@@ -28,7 +32,10 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
         CardSequencePanel = panel;
         business = b;
         student = s;
+        
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.

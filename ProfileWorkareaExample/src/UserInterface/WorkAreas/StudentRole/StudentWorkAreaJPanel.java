@@ -39,7 +39,6 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         btnCourseWork = new javax.swing.JButton();
-        btnManageProfile = new javax.swing.JButton();
         btnGraduationAudit = new javax.swing.JButton();
         btnRegistration = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -58,20 +57,6 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         btnCourseWork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCourseWorkIdentifyResourceAssetsActionPerformed(evt);
-            }
-        });
-
-        btnManageProfile.setBackground(new java.awt.Color(102, 153, 255));
-        btnManageProfile.setFont(getFont());
-        btnManageProfile.setForeground(new java.awt.Color(255, 255, 255));
-        btnManageProfile.setText("Manage Profile");
-        btnManageProfile.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnManageProfile.setMaximumSize(new java.awt.Dimension(200, 40));
-        btnManageProfile.setMinimumSize(new java.awt.Dimension(20, 20));
-        btnManageProfile.setPreferredSize(new java.awt.Dimension(240, 25));
-        btnManageProfile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageProfileActionPerformed(evt);
             }
         });
 
@@ -130,9 +115,8 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnTranscript, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(btnCourseWork, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                            .addComponent(btnManageProfile, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                            .addComponent(btnTranscript, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(btnCourseWork, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                         .addGap(75, 75, 75)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,11 +134,9 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(btnRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnManageProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGraduationAudit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addComponent(btnTranscript, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                    .addComponent(btnGraduationAudit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTranscript, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -166,17 +148,6 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(CardSequencePanel);
 
     }//GEN-LAST:event_btnCourseWorkIdentifyResourceAssetsActionPerformed
-
-    private void btnManageProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageProfileActionPerformed
-        // TODO add your handling code here:
-        StudentManageProfileJPanel smpJPanel = new StudentManageProfileJPanel(CardSequencePanel, business, student);
-        CardSequencePanel.add("StudentManageProfileJPanel", smpJPanel);
-        
-        CardLayout layout = (CardLayout) CardSequencePanel.getLayout();
-        layout.next(CardSequencePanel);
-
-
-}//GEN-LAST:event_btnManageProfileActionPerformed
 
     private void btnGraduationAuditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraduationAuditActionPerformed
         // TODO add your handling code here:
@@ -213,7 +184,6 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCourseWork;
     private javax.swing.JButton btnGraduationAudit;
-    private javax.swing.JButton btnManageProfile;
     private javax.swing.JButton btnRegistration;
     private javax.swing.JButton btnTranscript;
     private javax.swing.JLabel jLabel1;
