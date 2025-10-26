@@ -142,27 +142,35 @@ Buttons for:
 ## Current Project Status
 
 ### Completed (Akira Hanada):
-✅ Business layer implementation
-✅ Person class enhancement
-✅ Faculty Profile and Directory creation
-✅ CRUD operations for all directories
-✅ Test data configuration
-✅ Package structure fixes
-✅ Compilation error fixes
+✅ Business layer implementation  
+✅ Person class enhancement  
+✅ Faculty Profile and Directory creation  
+✅ CRUD operations for all directories  
+✅ Test data configuration  
+✅ Package structure fixes  
+✅ Compilation error fixes  
+✅ UI panels for Admin use case  
+✅ Form implementations for CRUD operations  
+✅ Input validation and error handling  
+✅ Testing and validation
 
 ### In Progress:
-🔄 UI panels for Admin use case
-🔄 Form implementations for CRUD operations
-🔄 Input validation and error handling
+🔄  
 
 ### To Do:
-- Complete ManagePersonsJPanel with table and CRUD UI
-- Complete AdministerPersonJPanel form
-- Implement ManageUserAccountsJPanel enhancements
-- Implement Manage Students UI panels
-- Implement Manage Faculty UI panels
-- Add Admin Profile Management panel
-- Testing and validation
+-  
+
+## Challenges & Solutions
+- This was our first time collaborating with multiple members across multiple branches. Through this project, we learned that it is possible.
+
+## Future Enhancements
+- Further UI/UX Improvements
+
+## Contribution Breakdown
+- **Akira Hanada** - Administrator Use Case (Branch: `Akira-feature-admin-use-case`)
+- **Maxwell Sowell** - Faculty Use Case (Branch: `Maxwell-feature-faculty-use-case`)
+- **Travis Hodo** - Student Use Case (Branch: `Travis-feature-student-use-case`)
+
 
 ## Code Attribution
 All code modifications are signed with `@author Akira Hanada` to track individual contributions.
