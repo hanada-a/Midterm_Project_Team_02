@@ -17,6 +17,7 @@ public class SeatAssignment {
     Seat seat;
     float grade;
     Boolean courseComplete;
+    boolean like; //true means like and false means not like
     ArrayList<Assignment> assignmentlist;
     
     public SeatAssignment(StudentProfile student, Seat seat) {
@@ -38,7 +39,9 @@ public class SeatAssignment {
         return assignmentlist;
     }
     
-    
+    public boolean getLike(){
+        return like;
+    }
 
     public StudentProfile getStudent() {
         return student;
@@ -74,6 +77,18 @@ public class SeatAssignment {
     
     public boolean isMatch(StudentProfile sp) {
         return student.isMatch(sp.getPerson().getPersonId());
+    }
+    
+    public void assignSeatToStudent(CourseLoad cl){
+        CourseLoad courseload = cl;
+    }
+    
+    public int getCreditHours(){
+        return seat.getCourseCredits();
+    }
+    
+    public float GetCourseStudentScore(){
+        return getCreditHours()*grade;
     }
     
     @Override

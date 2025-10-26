@@ -12,7 +12,7 @@ import Business.Person.Person;
  * @author kal bugrara
  */
 public class StudentProfile extends Profile {
-
+    
     String hobbies;
     String interests;
     

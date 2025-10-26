@@ -76,6 +76,21 @@ public class CourseOffer {
         this.facultyassignment = facultyassignment;
     }
     
+        public Seat getEmptySeat() {
+
+        for (Seat s : seatlist) {
+
+            if (!s.isOccupied()) {
+                return s;
+            }
+        }
+        return null;
+    }
+        
+        public int getCreditHours(){
+        return course.getCredits();
+    }
+    
     @Override
     public String toString() {
         return course.toString() + " (" + semester + ")";

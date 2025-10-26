@@ -10,6 +10,7 @@ package Business.Course;
  */
 public class Seat {
     
+    Boolean occupied;
     CourseOffer courseoffer;
     SeatAssignment seatassignment;
 
@@ -26,6 +27,7 @@ public class Seat {
         this.courseoffer = courseoffer;
     }
 
+    
     public SeatAssignment getSeatAssignment() {
         return seatassignment;
     }
@@ -34,9 +36,22 @@ public class Seat {
         this.seatassignment = seatassignment;
     }
     
+    public Boolean isOccupied(){
+        return occupied;
+
+    }
+    
+    public int getCourseCredits(){
+        return courseoffer.getCreditHours();
+    }
+    
     @Override
     public String toString() {
         return courseoffer.toString();
+    }
+
+    SeatAssignment newSeatAssignment(CourseLoad aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
