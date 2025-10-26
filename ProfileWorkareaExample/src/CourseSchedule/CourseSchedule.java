@@ -9,10 +9,7 @@ import CourseCatalog.Course;
 import CourseCatalog.CourseCatalog;
 import java.util.ArrayList;
 
-/**
- *
- * @author kal bugrara
- */
+
 public class CourseSchedule {
 
     CourseCatalog coursecatalog;

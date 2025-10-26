@@ -5,10 +5,6 @@
  */
 package CourseSchedule;
 
-/**
- *
- * @author kal bugrara
- */
 public class Seat {
     
     Boolean occupied; 

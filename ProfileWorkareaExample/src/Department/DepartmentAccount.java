@@ -7,10 +7,6 @@ package Department;
 
 import CourseSchedule.CourseSchedule;
 
-/**
- *
- * @author kal bugrara
- */
 public class DepartmentAccount {
   Department department;
     public DepartmentAccount(Department d){

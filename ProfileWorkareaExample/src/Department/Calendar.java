@@ -8,10 +8,7 @@ package Department;
 import CourseSchedule.CourseSchedule;
 import java.lang.*;
 import java.util.HashMap;
-/**
- *
- * @author kal bugrara
- */
+
 public class Calendar {
     
     HashMap<String, CourseSchedule> mastercatalog; 
