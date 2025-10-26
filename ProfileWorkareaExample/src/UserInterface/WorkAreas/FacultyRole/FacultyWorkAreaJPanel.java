@@ -14,6 +14,7 @@ import Business.Business;
 import Business.Profiles.FacultyProfile;
 import UserInterface.WorkAreas.AdminRole.ManagePersonnelWorkResp.ManagePersonsJPanel;
 import UserInterface.WorkAreas.FacultyRole.ManageCoursesWorkResp.ManageCoursesJPanel;
+import UserInterface.WorkAreas.FacultyRole.ManageStudentsWorkResp.ViewStudentProfilesJPanel;
 import javax.swing.JPanel;
 
 /**
@@ -49,7 +50,7 @@ public class FacultyWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         btnManageCourses = new javax.swing.JButton();
-        btnManageStudents = new javax.swing.JButton();
+        btnViewStudents = new javax.swing.JButton();
         btnProfile = new javax.swing.JButton();
         btnReports = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -70,17 +71,17 @@ public class FacultyWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnManageStudents.setBackground(new java.awt.Color(102, 153, 255));
-        btnManageStudents.setFont(getFont());
-        btnManageStudents.setForeground(new java.awt.Color(255, 255, 255));
-        btnManageStudents.setText("Manage Students Profiles");
-        btnManageStudents.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnManageStudents.setMaximumSize(new java.awt.Dimension(200, 40));
-        btnManageStudents.setMinimumSize(new java.awt.Dimension(20, 20));
-        btnManageStudents.setPreferredSize(new java.awt.Dimension(240, 25));
-        btnManageStudents.addActionListener(new java.awt.event.ActionListener() {
+        btnViewStudents.setBackground(new java.awt.Color(102, 153, 255));
+        btnViewStudents.setFont(getFont());
+        btnViewStudents.setForeground(new java.awt.Color(255, 255, 255));
+        btnViewStudents.setText("View All Student Profiles");
+        btnViewStudents.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnViewStudents.setMaximumSize(new java.awt.Dimension(200, 40));
+        btnViewStudents.setMinimumSize(new java.awt.Dimension(20, 20));
+        btnViewStudents.setPreferredSize(new java.awt.Dimension(240, 25));
+        btnViewStudents.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageStudentsActionPerformed(evt);
+                btnViewStudentsActionPerformed(evt);
             }
         });
 
@@ -126,7 +127,7 @@ public class FacultyWorkAreaJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(btnManageCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(75, 75, 75)
-                            .addComponent(btnManageStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnViewStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(btnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -142,7 +143,7 @@ public class FacultyWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnManageCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnManageStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnViewStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,20 +154,21 @@ public class FacultyWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageCoursesIdentifyResourceAssetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCoursesIdentifyResourceAssetsActionPerformed
         // TODO add your handling code here:
-        CardSequencePanel.removeAll();
 
-        ManageCoursesJPanel mcp = new ManageCoursesJPanel(business, faculty, CardSequencePanel);
-
-        CardSequencePanel.add("Manage Courses", mcp);
+        ManageCoursesJPanel panel = new ManageCoursesJPanel(business, faculty, CardSequencePanel);
+        CardSequencePanel.add("Manage Courses", panel);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 
     }//GEN-LAST:event_btnManageCoursesIdentifyResourceAssetsActionPerformed
 
-    private void btnManageStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageStudentsActionPerformed
+    private void btnViewStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudentsActionPerformed
         // TODO add your handling code here:
 
+        ViewStudentProfilesJPanel panel = new ViewStudentProfilesJPanel(business, faculty, CardSequencePanel);
+        CardSequencePanel.add("View Student Profiles", panel);
+        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
   
-    }//GEN-LAST:event_btnManageStudentsActionPerformed
+    }//GEN-LAST:event_btnViewStudentsActionPerformed
 
     private void btnProfileIdentifyEventsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileIdentifyEventsActionPerformed
         // TODO add your handling code here:
@@ -185,9 +187,9 @@ public class FacultyWorkAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageCourses;
-    private javax.swing.JButton btnManageStudents;
     private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnReports;
+    private javax.swing.JButton btnViewStudents;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
