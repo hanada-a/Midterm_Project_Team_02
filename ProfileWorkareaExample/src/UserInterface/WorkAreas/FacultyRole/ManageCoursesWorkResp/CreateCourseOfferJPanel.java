@@ -72,6 +72,8 @@ public class CreateCourseOfferJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(102, 102, 255));
+
         cmbCourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbCourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

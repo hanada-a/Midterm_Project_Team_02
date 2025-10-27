@@ -85,6 +85,8 @@ public class ManageGradesJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAssignments = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(204, 255, 204));
+
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel1.setText("Manage Student Grades");
 

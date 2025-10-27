@@ -93,6 +93,8 @@ public class StudentProfileDetailsJPanel extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 153, 153));
+
         tblGrades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

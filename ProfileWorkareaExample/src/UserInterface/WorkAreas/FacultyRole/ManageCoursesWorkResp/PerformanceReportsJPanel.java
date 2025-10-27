@@ -92,6 +92,8 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 153));
+
         tblGrades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},

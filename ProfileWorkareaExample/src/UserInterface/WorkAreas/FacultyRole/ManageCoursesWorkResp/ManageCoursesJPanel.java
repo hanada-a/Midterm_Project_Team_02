@@ -79,6 +79,8 @@ public class ManageCoursesJPanel extends javax.swing.JPanel {
         btnCreate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 153, 255));
+
         tblCourses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
