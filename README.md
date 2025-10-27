@@ -251,10 +251,20 @@ Buttons for:
 ---
 
 ### Student Use Case Implementation (Travis Hodo)
-
-
-
-
+1. Login with student credentials (adam, student123)
+2. Manage Course Work:
+   - View your assigned work
+   - Submit coursework
+   - View work progress
+3. Register for Courses:
+   - View Course Catalog
+   - Select desired course
+   - Click add course
+4. View Transcript:
+   - See past and current courses
+5. Audit Degree:
+   - View required core and elective courses
+   - See if student is ready to graduate
 
 ---
 
