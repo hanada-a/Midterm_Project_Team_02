@@ -6,7 +6,7 @@ package UserInterface.WorkAreas.StudentRole;
 
 import Business.Business;
 import Business.Course.SeatAssignment;
-import Business.Course.Transcript;
+// import Business.Course.Transcript; // Transcript class not implemented yet
 import Business.Profiles.StudentProfile;
 import java.awt.CardLayout;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
     JPanel CardSequencePanel;
     Business business;
     StudentProfile student;
-    Transcript transcript;
+    // Transcript transcript; // Transcript class not implemented yet
     
     /**
      * Creates new form StudentManageProfileJPanel
@@ -33,19 +33,24 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
         CardSequencePanel = panel;
         business = b;
         student = s;
-        populateTable(transcript);
+        populateTable(); // Populate with available data
     }
     
-    private void populateTable(Transcript transcript) {
+    private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) tblTranscript.getModel();
         model.setRowCount(0);
-        ArrayList<SeatAssignment> list = transcript.getCourseList();
-        for (SeatAssignment sa : list) {
-            Object[] row = new Object[2];
-            row[0] = sa.getCourseOffer().getCourse().getCourseName();
-            row[1] = sa.getGrade();
-            model.addRow(row);
-        }
+        // TODO: Implement transcript functionality
+        // For now, display placeholder message
+        // Transcript class needs to be implemented
+        
+        // When Transcript is implemented, use:
+        // ArrayList<SeatAssignment> list = student.getTranscript().getCourseList();
+        // for (SeatAssignment sa : list) {
+        //     Object[] row = new Object[2];
+        //     row[0] = sa.getSeat().getCourseOffer().getCourse().getCourseName();
+        //     row[1] = sa.getGrade();
+        //     model.addRow(row);
+        // }
     }
 
     /**
