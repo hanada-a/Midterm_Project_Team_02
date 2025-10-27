@@ -150,6 +150,11 @@ public class ViewStudentProfilesJPanel extends javax.swing.JPanel {
         }
         StudentProfile selected = (StudentProfile) tblStudents.getValueAt(row, 0);
         
+        if (selected == null) {
+            JOptionPane.showMessageDialog(this, "Invalid selection", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         StudentProfileDetailsJPanel panel = new StudentProfileDetailsJPanel(CardSequencePanel, business, selected);
         CardSequencePanel.add("StudentProfileDetails", panel);
         CardLayout layout = (CardLayout) CardSequencePanel.getLayout();

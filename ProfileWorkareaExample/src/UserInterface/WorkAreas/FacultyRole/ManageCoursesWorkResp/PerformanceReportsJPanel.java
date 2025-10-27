@@ -184,6 +184,11 @@ public class PerformanceReportsJPanel extends javax.swing.JPanel {
         }
     
         SeatAssignment sa = seatAssignments.get(row);
+        
+        if (sa == null) {
+            JOptionPane.showMessageDialog(this, "Invalid selection", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
     
         ManageGradesJPanel panel = new ManageGradesJPanel(CardSequencePanel, sa, this);
         CardSequencePanel.add("Manage Grades", panel);
