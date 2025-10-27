@@ -100,5 +100,9 @@ public class SeatAssignment {
     public String toString() {
         return student.getPerson().toString() + " (" + seat.getCourseOffer().toString() + ")";
     }
+
+    Object getAssociatedCourse() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
