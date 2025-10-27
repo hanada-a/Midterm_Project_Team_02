@@ -9,6 +9,7 @@ import Business.Course.SeatAssignment;
 import Business.Course.Transcript;
 import Business.Profiles.StudentProfile;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -32,10 +33,20 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
         CardSequencePanel = panel;
         business = b;
         student = s;
-        
+        populateTable(transcript);
     }
     
-
+    private void populateTable(Transcript transcript) {
+        DefaultTableModel model = (DefaultTableModel) tblTranscript.getModel();
+        model.setRowCount(0);
+        ArrayList<SeatAssignment> list = transcript.getCourseList();
+        for (SeatAssignment sa : list) {
+            Object[] row = new Object[2];
+            row[0] = sa.getCourseOffer().getCourse().getCourseName();
+            row[1] = sa.getGrade();
+            model.addRow(row);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,6 +59,8 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
 
         lblTitle = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblTranscript = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(0, 153, 153));
 
@@ -61,6 +74,24 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
             }
         });
 
+        tblTranscript.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Course Name", "Grade"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblTranscript);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,8 +103,10 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
                         .addComponent(btnBack))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(93, 93, 93)
-                        .addComponent(lblTitle)))
-                .addContainerGap(862, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTitle))))
+                .addContainerGap(555, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,7 +115,9 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addGap(18, 18, 18)
                 .addComponent(lblTitle)
-                .addContainerGap(395, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -96,6 +131,10 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JTable tblTranscript;
     // End of variables declaration//GEN-END:variables
+
+
 }

@@ -75,6 +75,11 @@ public class SeatAssignment {
         this.courseComplete = courseComplete;
     }
     
+    public CourseOffer getCourseOffer(){
+        
+        return seat.getCourseOffer();
+    }
+    
     public boolean isMatch(StudentProfile sp) {
         return student.isMatch(sp.getPerson().getPersonId());
     }

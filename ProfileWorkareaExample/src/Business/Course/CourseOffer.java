@@ -90,6 +90,10 @@ public class CourseOffer {
         public int getCreditHours(){
         return course.getCredits();
     }
+        
+    public Course getSubjectCourse(){
+        return course;
+    }
     
     @Override
     public String toString() {

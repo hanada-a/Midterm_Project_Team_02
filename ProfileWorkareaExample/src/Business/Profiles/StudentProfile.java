@@ -5,7 +5,10 @@
  */
 package Business.Profiles;
 
+import Business.Course.SeatAssignment;
+import Business.Course.Transcript;
 import Business.Person.Person;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +18,7 @@ public class StudentProfile extends Profile {
     
     String hobbies;
     String interests;
+    Transcript transcript;
     
 //    Transcript transcript;
     //   EmploymentHistroy employmenthistory;
@@ -52,5 +56,8 @@ public class StudentProfile extends Profile {
     public boolean isMatch(String id) {
         return person.getPersonId().equals(id);
     }
-
+    
+    public ArrayList<SeatAssignment> getCourseList() {
+        return transcript.getCourseList();
+    }
 }
