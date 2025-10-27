@@ -2,9 +2,9 @@
 INFO5100.20180.202610 Assignments8 — Midterm Project [Group]
 
 ## Team Members
-- **Akira Hanada** - Administrator Use Case (Branch: `Akira-feature-admin-use-case`)
-- **Maxwell Sowell** - Faculty Use Case (Branch: `Maxwell-feature-faculty-use-case`)
-- **Travis Hodo** - Student Use Case (Branch: `Travis-feature-student-use-case`)
+- **Akira Hanada (NUID: )** - Administrator Use Case (Branch: `Akira-feature-admin-use-case`)
+- **Maxwell Sowell (NUID: 003188473)** - Faculty Use Case (Branch: `Maxwell-feature-faculty-use-case`)
+- **Travis Hodo (NUID: )** - Student Use Case (Branch: `Travis-feature-student-use-case`)
 
 ## Project Overview
 Digital University System with Access Control Layer for proper authentication and role-based access control. The system manages three distinct user roles (Administrator, Faculty, Student) with role-based permissions and functionality.
@@ -398,7 +398,7 @@ Buttons for:
 - Further UI/UX Improvements
 - Advanced searching and filtering
 - (Faculty) Calculate overall course grade based on assignment grades
-- (Faculty) Implement seats and seat assignments as separate classes so faculty can set a number of available seats
+- (Faculty) Give faculty ability to set a number of available seats for a course offer
 - (Faculty) Implement assignment due dates
 - 
 

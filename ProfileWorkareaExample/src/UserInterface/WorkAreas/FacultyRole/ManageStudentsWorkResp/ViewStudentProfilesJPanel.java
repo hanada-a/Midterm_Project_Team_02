@@ -65,6 +65,8 @@ public class ViewStudentProfilesJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 204, 204));
+
         tblStudents.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
