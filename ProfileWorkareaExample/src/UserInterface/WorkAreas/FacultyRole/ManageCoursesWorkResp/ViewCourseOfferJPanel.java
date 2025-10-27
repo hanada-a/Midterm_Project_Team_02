@@ -378,6 +378,11 @@ public class ViewCourseOfferJPanel extends javax.swing.JPanel {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         
+        if (courseOffer == null || courseOffer.getCourse() == null) {
+            JOptionPane.showMessageDialog(this, "Invalid course data", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         courseOffer.getCourse().setCourseName(txtCourseName.getText());
         courseOffer.getCourse().setCredits(Integer.parseInt((String) cmbCredits.getSelectedItem()));
         courseOffer.getCourse().setIsCore(cmbIsCore.getSelectedItem().equals("Yes"));
@@ -406,6 +411,7 @@ public class ViewCourseOfferJPanel extends javax.swing.JPanel {
         btnAddAssignment.setEnabled(false);
         btnDeleteAssignment.setEnabled(false);
         btnSave.setEnabled(false);
+        btnUpdate.setEnabled(true);
             
         JOptionPane.showMessageDialog(this, "Updates saved", "Info", JOptionPane.INFORMATION_MESSAGE);
           
@@ -416,10 +422,12 @@ public class ViewCourseOfferJPanel extends javax.swing.JPanel {
         
         String assignmentName = JOptionPane.showInputDialog(this, "Enter assignment name");
         
-        if (assignmentName != null && !assignmentName.isEmpty()) {
+        if (assignmentName != null && !assignmentName.trim().isEmpty()) {
             courseOffer.newAssignment(assignmentName);
             refreshAssignmentsTable();
             JOptionPane.showMessageDialog(this, "Assignment added");
+        } else if (assignmentName != null) {
+            JOptionPane.showMessageDialog(this, "Assignment name cannot be empty", "Validation Error", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_btnAddAssignmentActionPerformed

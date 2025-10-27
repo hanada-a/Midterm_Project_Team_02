@@ -179,6 +179,11 @@ public class CreateCourseOfferJPanel extends javax.swing.JPanel {
         String courseId = selectedCourse.split(" - ")[0];
         Course course = business.getCourseCatalog().findCourse(courseId);
         
+        if (course == null) {
+            JOptionPane.showMessageDialog(this, "Course not found", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }    
+        
         CourseOffer newOffer = business.getCourseSchedule().newCourseOffer(course, semester);
         FacultyAssignment fa = new FacultyAssignment(faculty, newOffer);
         newOffer.setFacultyassignment(fa);

@@ -184,6 +184,11 @@ public class ManageCoursesJPanel extends javax.swing.JPanel {
         }
         CourseOffer selected = (CourseOffer) tblCourses.getValueAt(row, 0);
         
+        if (selected == null) {
+            JOptionPane.showMessageDialog(this, "Invalid selection", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         ViewCourseOfferJPanel panel = new ViewCourseOfferJPanel(CardSequencePanel, selected, business);
         CardSequencePanel.add("ViewCourseOffer", panel);
         CardLayout layout = (CardLayout) CardSequencePanel.getLayout();
@@ -210,6 +215,12 @@ public class ManageCoursesJPanel extends javax.swing.JPanel {
             return;
         }
         CourseOffer selected = (CourseOffer) tblCourses.getValueAt(row, 0);
+        
+        if (selected == null) {
+            JOptionPane.showMessageDialog(this, "Invalid selection", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         business.getCourseSchedule().getCourseOfferlist().remove(selected);
         refreshTable();
         
